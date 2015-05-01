@@ -27,9 +27,10 @@ router.get '/devices/:id', (req, res) ->
 		if err
 			console.log(err)
 			res.status(404).send(error: "Not found")
-		resin.models.device.get device[0].resinId, (err, resinDevice) ->
-			console.log(err) if err?
-			device = device[0]
-			res.send({ device, resinDevice })
+		else
+			resin.models.device.get device[0].resinId, (err, resinDevice) ->
+				console.log(err) if err?
+				device = device[0]
+				res.send({ device, resinDevice })
 
 module.exports = router

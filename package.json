@@ -22,8 +22,6 @@
     "coffee-script": "^1.9.2",
     "express": "^4.12.3",
     "mongoose": "^4.0.2",
-    "resin-request": "^1.2.3",
     "resin-sdk": "^1.3.4",
-    "resin-token": "^1.2.0"
   }
 }

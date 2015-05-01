@@ -1,7 +1,7 @@
 express = require('express')
 router = express.Router();
 
-request = require('resin-request')
+request = require('request')
 url = require('url')
 config = require('../config')
 
@@ -18,14 +18,11 @@ router.get '/download', (req, res) ->
     query = url.format({
       query: parameters
     })
-    downloadUrl = url.resolve('/download', query)
-    return request.request
-    	method: 'GET',
-    	url: downloadUrl,
-    	pipe: res
-    , (err) ->
-    	if(err)
-    		console.log(err)
-    , (state) -> {}
+    downloadUrl = url.resolve('https://dashboard.resin.io/download', query)
+    options = {
+		headers: Authorization: "Bearer " + config.token
+		url: downloadUrl
+	}
+    return request.get(options).pipe(res)
 
 module.exports = router
