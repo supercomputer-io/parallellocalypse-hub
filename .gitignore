@@ -1,5 +1,6 @@
-#resin token
-token.json
+#resin token and appId
+config.json
+
 # Logs
 logs
 *.log

@@ -2,12 +2,9 @@ express = require('express')
 router = express.Router();
 resin = require('resin-sdk')
 fs = require('fs')
+config = require('../config')
 
 Device = require('../models/device');
-
-resin.auth.loginWithToken JSON.parse(fs.readFileSync('token.json', encoding: 'utf-8')).token, (err) ->
-	throw err if err?
-	console.log('Authenticated with Resin')
 
 router.post '/devices', (req, res) ->
 	device = new Device(req.body)
