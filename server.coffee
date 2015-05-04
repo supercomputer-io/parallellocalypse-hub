@@ -20,9 +20,14 @@ resin.auth.loginWithToken token, (err) ->
 port = process.env.PORT or 8080
 app = express()
 app.use(bodyParser())
+app.use (req, res, next) ->
+	console.log('%s %s', req.method, req.url)
+	next()
+
 app.use(express.static(__dirname + '/public'))
-app.use(require('./controllers/devices_controller'))
-app.use(require('./controllers/download_controller'))
+
+app.use('/api/', require('./controllers/devices_controller'))
+app.use('/api/', require('./controllers/download_controller'))
 
 app.listen port, ->
 	console.log("Server listening on port #{port}")

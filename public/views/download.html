@@ -1,0 +1,36 @@
+<div class="col-sm-6">
+	<form class="form form-horizontal" action="/download" method="get">
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Network connection:</label>
+			<div class="col-sm-7">
+				<label class="radio-inline">
+					<input type="radio" name="network" value="ethernet" ng-model="networkConfig.type"> Ethernet cable
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="network" value="wifi" ng-model="networkConfig.type" class="ng-pristine ng-untouched ng-valid"> Wireless LAN
+				</label>
+			</div>
+		</div>
+		<div ng-show="networkConfig.type == 'wifi'" class="ng-hide">
+			<div class="form-group">
+				<label class="col-sm-5 control-label">SSID:</label>
+				<div class="col-sm-7">
+					<input class="form-control" name="wifiSsid" ng-model="networkConfig.wifiSsid">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Passphrase:</label>
+				<div class="col-sm-7">
+					<div class="input-group">
+						<input show-password="" class="form-control" type="password" name="wifiKey" ng-model="networkConfig.wifiKey">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-5 col-sm-7">
+				<button class="btn btn-primary btn-block" type="submit" ng-disabled="downloadDisabled()" ng-click="close()" analytics-on="click" analytics-event="Download Image" analytics-application="mastic">  Download OS File  <span ng-show="::downloadSize">(~1.4 GB)</span></button>
+			</div>
+		</div>
+	</form>
+</div>

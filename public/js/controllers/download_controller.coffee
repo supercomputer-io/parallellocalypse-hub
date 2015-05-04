@@ -1,0 +1,7 @@
+define [
+], () ->
+	return ['$scope', 
+		($scope) ->
+
+	]
+	

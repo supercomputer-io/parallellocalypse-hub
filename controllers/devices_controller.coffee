@@ -24,8 +24,8 @@ router.get '/devices', (req, res) ->
 
 router.get '/devices/by_mac_address/:mac', (req, res) ->
 	Device.find {macAddress: req.params.mac}, (err, device) ->
-		if err
-			console.log(err)
+		if err or !device[0]
+			console.log(err) if err
 			res.status(404).send(error: "Not found")
 		else
 			resin.models.device.get device[0].resinId, (err, resinDevice) ->
