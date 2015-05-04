@@ -25,6 +25,9 @@ define [
 				.when '/devices',
 					controller: devicesController
 					templateUrl: 'views/devices.html'
+				.when '/devices/:mac',
+					controller: devicesController
+					templateUrl: 'views/devices.html'	
 		]
 		.config [ 'RestangularProvider', (RestangularProvider) ->
 			RestangularProvider.setBaseUrl('api')

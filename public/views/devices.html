@@ -4,7 +4,10 @@
 		<input class='form-control' ng-model="macAddress" type='text'><button class="btn btn-info" type="submit">Search</button>
 	</form>
 </div>
-<div class="row" ng-show="device != null">
-	<h2>{{ device.device.resinId }}</h2>
+<div class="row" ng-if="device != null">
+	<h2>{{ device.resinDevice.name }}</h2>
 	<p ng-if="device.resinDevice">Status: {{ device.resinDevice.status }}</p>
+</div>
+<div class="row" ng-if="device == null">
+	<p>No device yet...</p>
 </div>
