@@ -35,7 +35,7 @@ router.get '/devices/by_mac_address/:mac', (req, res) ->
 
 router.get '/devices/:id', (req, res) ->
 	Device.find {_id: req.params.id}, (err, device) ->
-		if err
+		if err or !device[0]
 			console.log(err)
 			res.status(404).send(error: "Not found")
 		else
