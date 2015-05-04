@@ -7,7 +7,7 @@
 					<input type="radio" name="network" value="ethernet" ng-model="networkConfig.type"> Ethernet cable
 				</label>
 				<label class="radio-inline">
-					<input type="radio" name="network" value="wifi" ng-model="networkConfig.type" class="ng-pristine ng-untouched ng-valid"> Wireless LAN
+					<input type="radio" name="network" value="wifi" ng-model="networkConfig.type"> Wireless LAN
 				</label>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-5 col-sm-7">
-				<button class="btn btn-primary btn-block" type="submit" ng-disabled="downloadDisabled()" ng-click="close()" analytics-on="click" analytics-event="Download Image" analytics-application="mastic">  Download OS File  <span ng-show="::downloadSize">(~1.4 GB)</span></button>
+				<button class="btn btn-primary btn-block" type="submit">  Download OS File  <span ng-show="::downloadSize">(~1.4 GB)</span></button>
 			</div>
 		</div>
 	</form>
