@@ -25,5 +25,9 @@
     "express": "^4.12.3",
     "mongoose": "^4.0.2",
     "resin-sdk": "^1.3.4"
+  },
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.7.x"
   }
 }
