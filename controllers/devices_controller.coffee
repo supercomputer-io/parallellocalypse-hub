@@ -28,7 +28,7 @@ router.get '/devices/by_mac_address/:mac', (req, res) ->
 			console.log(err) if err
 			res.status(404).send(error: "Not found")
 		else
-			resin.models.device.get device[0].resinId, (err, resinDevice) ->
+			resin.models.device.getByUUID device[0].resinId, (err, resinDevice) ->
 				console.log(err) if err?
 				device = device[0]
 				res.send({ device, resinDevice })
@@ -39,7 +39,7 @@ router.get '/devices/:id', (req, res) ->
 			console.log(err)
 			res.status(404).send(error: "Not found")
 		else
-			resin.models.device.get device[0].resinId, (err, resinDevice) ->
+			resin.models.device.getByUUID device[0].resinId, (err, resinDevice) ->
 				console.log(err) if err?
 				device = device[0]
 				res.send({ device, resinDevice })
