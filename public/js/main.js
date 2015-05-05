@@ -9,7 +9,8 @@ require.config({
 		restangular: '/bower_components/restangular/dist/restangular.min',
 		bluebird: '/bower_components/bluebird/js/browser/bluebird.min',
 		jquery: '/bower_components/jquery/dist/jquery.min',
-		bootstrap: '/bower_components/bootstrap/dist/js/bootstrap.min'
+		bootstrap: '/bower_components/bootstrap/dist/js/bootstrap.min',
+		visibilityjs: '/bower_components/visibilityjs/lib/visibility.core'
 	},
 	shim: {
 		angular: {
@@ -27,6 +28,9 @@ require.config({
 		},
 		restangular: {
 			deps: [ 'lodash', 'angular' ]
+		},
+		visibilityjs: {
+			exports: 'Visibility'
 		}
 	}
 })

@@ -4,13 +4,15 @@ define [
 	'restangular',
 	'cs!js/controllers/devices_controller',
 	'cs!js/controllers/download_controller',
-	'angular-route'
-], (angular, _, Restangular, devicesController, downloadController) ->
+	'angular-route',
+	'cs!js/helpers/create_poll'
+], (angular, _, Restangular, devicesController, downloadController, createPoll) ->
 
 	angular
 		.module('app', [
 			'restangular',
-			'ngRoute'
+			'ngRoute',
+			'createPoll'
 		])
 
 		.run([ '$rootScope', 'Restangular' , ($rootScope, Restangular) ->
