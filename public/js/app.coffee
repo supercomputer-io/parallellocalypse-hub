@@ -4,15 +4,17 @@ define [
 	'restangular',
 	'cs!js/controllers/devices_controller',
 	'cs!js/controllers/download_controller',
+	'cs!js/helpers/create_poll',
 	'angular-route',
-	'cs!js/helpers/create_poll'
+	'angular-timeago'
 ], (angular, _, Restangular, devicesController, downloadController, createPoll) ->
 
 	angular
 		.module('app', [
 			'restangular',
 			'ngRoute',
-			'createPoll'
+			'createPoll',
+			'yaru22.angular-timeago'
 		])
 
 		.run([ '$rootScope', 'Restangular' , ($rootScope, Restangular) ->

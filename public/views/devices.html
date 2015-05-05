@@ -6,7 +6,8 @@
 </div>
 <div class="row" ng-if="device != null">
 	<h2>{{ device.resinDevice.name }}</h2>
-	<p ng-if="device.resinDevice">Status: {{ device.resinDevice.status }}</p>
+	<p ng-show="device.resinDevice.is_online">Status: {{ device.resinDevice.status }}</p>
+	<p ng-hide="device.resinDevice.is_online">Status: Offline (last seen: {{ device.resinDevice.last_seen_time | timeAgo }})</p>
 </div>
 <div class="row" ng-if="device == null">
 	<p>No device yet...</p>

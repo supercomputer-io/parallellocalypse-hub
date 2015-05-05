@@ -24,6 +24,7 @@
     "bluebird": "~2.9.25",
     "bootstrap": "~3.3.4",
     "jquery": "~2.1.4",
-    "visibilityjs": "~1.2.1"
+    "visibilityjs": "~1.2.1",
+    "angular-timeago": "~0.1.10"
   }
 }
