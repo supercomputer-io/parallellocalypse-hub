@@ -21,6 +21,9 @@ require.config({
 		'angular-route': {
 			deps: [ 'angular' ]
 		},
+		'angular-timeago': {
+			deps: [ 'angular' ]
+		},
 		bootstrap: {
 			deps: [ 'jquery' ]
 		},
