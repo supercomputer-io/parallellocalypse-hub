@@ -14,6 +14,11 @@ router.use(multer({ dest: './uploads/'}))
 
 router.all '/work', (req, res, next) ->
 
+	workload = new Workload({
+		status: "Starting",
+		numAssigned: 0,
+		assigned: []
+	})
 	image = new Image({personName: null, target: true })
 
 	image.attach 'image', req.files.image, (err) ->
@@ -24,12 +29,10 @@ router.all '/work', (req, res, next) ->
 			if(err)
 				return next(err)
 
-			dispatcher.start image, {
-				totalSize: 13000,
-				numAssigned: 0,
-				assigned: []
-			}
-			res.send('OK')
+			workload.targetImage = image
+			workload.save (err) ->
+				dispatcher.start workload
+				res.send('OK')
 	
 
 

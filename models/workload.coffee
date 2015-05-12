@@ -1,7 +1,10 @@
 mongoose = require('mongoose');
 
 Workload = mongoose.model 'workload',
-	targetImage: mongoose.Schema.Types.ObjectId
+	targetImage: {
+		type: mongoose.Schema.Types.ObjectId
+		ref: 'image'
+	}
 	status: String
 	chunkSize: Number
 	numChunks: Number
