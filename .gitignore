@@ -30,5 +30,6 @@ build/Release
 node_modules
 
 public/bower_components
+public/images
 .bower-cache
 .bower-registry

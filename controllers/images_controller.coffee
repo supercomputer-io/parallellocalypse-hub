@@ -12,9 +12,9 @@ Image = require('../models/image')
 
 router.use(multer({ dest: './uploads/'}))
 
-router.all '/work', (req, res, next) ->
+router.post '/images', (req, res, next) ->
 
-	image = new Image({personName: null, target: true })
+	image = new Image({personName: req.body.name, target: false })
 
 	image.attach 'image', req.files.image, (err) ->
 		if(err)
@@ -23,12 +23,6 @@ router.all '/work', (req, res, next) ->
 		image.save (err) ->
 			if(err)
 				return next(err)
-
-			dispatcher.start image, {
-				totalSize: 13000,
-				numAssigned: 0,
-				assigned: []
-			}
 			res.send('OK')
 	
 
