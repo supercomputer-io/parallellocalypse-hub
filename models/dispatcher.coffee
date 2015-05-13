@@ -5,6 +5,7 @@ pubnub = require('pubnub')({
 })
 _ = require 'lodash'
 Image = require './image'
+Device = require './device'
 
 
 
@@ -12,26 +13,50 @@ Image = require './image'
 distributeLoad = (workload, workers) ->
 	startTime = Date.now()
 
-	results = []
-	numResults = 0
+	workload.results = []
+	workload.numResults = 0
+	workload.status = 'Distributing...'
+	workload.save()
 
 	finishWork = () ->
-		theUltimateResult = _.max(results, 'value')
+		theUltimateResult = _.max(workload.results, 'value')
 		console.log('The ultimate result is:')
 		console.log(theUltimateResult)
+		workload.finalResult = theUltimateResult
+		workload.markModified('finalResult')
+		workload.save()
 
 	newWorkingStatus = (m) ->
-		console.log('Status')
-		console.log(m)
+		if m.progress < 100
+			Device.findOne {macAddress: m.device}, (err, device) ->
+				if err
+					return err
+				device.status = 'Working'
+				device.progress = m.progress
+				device.save()
 
 	newResults = (m) ->
 		console.log('Results')
 		console.log(m)
 		console.log("Took " + (Date.now() - startTime) + "ms")
-		results[m.chunkId] = m
-		numResults += 1
-		if numResults == workload.numChunks
+		workload.results[m.chunkId] = m
+		workload.numResults += 1
+
+		Device.findOne {macAddress: m.device}, (err, device) ->
+			if err
+				return err
+			device.status = 'Idle'
+			device.progress = 100
+			device.lastElapsedTime = m.elapsedTime
+			device.lastProcessed = Date.now()
+			device.totalProcessed += workload.chunkSize
+			device.save()
+
+		workload.markModified('results')
+		if workload.numResults == workload.numChunks
 			finishWork()
+		else
+			workload.save()
 
 	pubnub.subscribe({
 		channel: 'working'
@@ -75,17 +100,21 @@ distributeLoad = (workload, workers) ->
 						workSize
 					}
 				})
-				chunkId += 1
 				workload.assigned[chunkId] = {
 					worker: workerList[0]
 					assignTime: Date.now()
 				}
+				chunkId += 1
 				workload.numAssigned += 1
 				_.pullAt(workerList, 0)
+			workload.markModified('assigned')
+			workload.status = 'Processing'
+			workload.save()
 
 		distributeAll(workerList)
 		console.log(workload.assigned)
 	)
+
 module.exports = {
 	start: (workload) ->
 		distributeToPresent = () ->

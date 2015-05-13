@@ -11,6 +11,11 @@ Workload = mongoose.model 'workload',
 	numAssigned:
 		type: Number
 		default: 0
+	numResults:
+		type: Number
+		default: 0
 	assigned: []
+	results: []
+	finalResult: mongoose.Schema.Types.Mixed
 
 module.exports = Workload;
