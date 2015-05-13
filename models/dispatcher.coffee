@@ -125,4 +125,15 @@ module.exports = {
 			})
 
 		distributeToPresent()
+
+	warmCache: () ->
+		Image.count {target: false}, (err, count) ->
+			pageSize = 1000
+			nPages = Math.ceil(count / pageSize)
+			_.each [1..nPages], (page) ->
+				Image.paginate {target: false}, page, pageSize, (error, pageCount, paginatedResults, itemCount) ->
+					pubnub.publish({
+						channel: 'images'
+						message: paginatedResults
+					})
 }

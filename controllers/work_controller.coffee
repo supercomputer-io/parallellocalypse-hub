@@ -12,6 +12,10 @@ Image = require('../models/image')
 
 router.use(multer({ dest: './uploads/'}))
 
+router.all '/warmup', (req, res, next) ->
+	dispatcher.warmCache()
+	res.send('OK')
+
 router.post '/work', (req, res, next) ->
 
 	workload = new Workload({

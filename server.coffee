@@ -11,6 +11,8 @@ mongoose.connect mongooseURL, (err) ->
 		throw err
 	console.log("Connected to MongoDB")
 
+mongoose.plugin(require('mongoose-paginate'))
+
 token = config.token
 
 resin.auth.loginWithToken token, (err) ->
