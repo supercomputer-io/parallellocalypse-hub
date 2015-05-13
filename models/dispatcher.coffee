@@ -1,4 +1,4 @@
-config = require('../config.json')
+config = require('../config')
 pubnub = require('pubnub')({
 	subscribe_key: config.subscribe_key
 	publish_key: config.publish_key
