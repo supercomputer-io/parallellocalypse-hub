@@ -12,7 +12,7 @@ Image = require('../models/image')
 
 router.use(multer({ dest: './uploads/'}))
 
-router.all '/work', (req, res, next) ->
+router.post '/work', (req, res, next) ->
 
 	workload = new Workload({
 		status: "Starting",
@@ -32,8 +32,16 @@ router.all '/work', (req, res, next) ->
 			workload.targetImage = image
 			workload.save (err) ->
 				dispatcher.start workload
-				res.send('OK')
-	
+				res.send(workload)
+
+
+router.get '/work', (req, res, next) ->
+	Workload.find({}).populate('targetImage').exec (err, workloads) ->
+		res.send(workloads)
+
+router.get '/work/:id', (req, res, next) ->
+	Workload.findOne({_id: req.params.id}).populate('targetImage').exec (err, workload) ->
+		res.send(workload)
 
 
 module.exports = router

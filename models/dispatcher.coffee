@@ -69,7 +69,7 @@ distributeLoad = (workload, workers) ->
 				pubnub.publish({
 					channel: workerList[0]
 					message: {
-						targetImage: { url: workload.targetImage.original_img }
+						targetImage: workload.targetImage
 						chunkId
 						images: imgs
 						workSize
