@@ -15,13 +15,14 @@ distributeLoad = (workload, workers) ->
 
 	workload.results = []
 	workload.numResults = 0
-	workload.status = 'Distributing...'
+	workload.status = 'Distributing'
 	workload.save()
 
 	finishWork = () ->
 		theUltimateResult = _.max(workload.results, 'value')
 		console.log('The ultimate result is:')
 		console.log(theUltimateResult)
+		workload.status = "Done"
 		workload.finalResult = theUltimateResult
 		workload.markModified('finalResult')
 		workload.save()
@@ -81,14 +82,20 @@ distributeLoad = (workload, workers) ->
 		console.log('got images')
 		console.log(images.length)
 		workload.totalSize = images.length
-		workload.chunkSize = Math.min(workload.totalSize / numWorkers, 1000)
+		workload.chunkSize = Math.min(workload.totalSize / numWorkers, 100)
 		console.log(workload.chunkSize)
 		workload.numChunks = workload.totalSize / workload.chunkSize	
 	# until workload complete
 		distributeAll = (workerList) ->
 			while(workload.numAssigned < workload.numChunks && workerList.length > 0)
 			
-				imgs = images[(chunkId*workload.chunkSize)..((chunkId+1)*workload.chunkSize - 1)]
+				imgs = _.map images[(chunkId*workload.chunkSize)..((chunkId+1)*workload.chunkSize - 1)], (obj) ->
+					return {
+						original_img: obj.original_img
+						personName: obj.personName
+						id: obj._id
+					}
+
 				workSize = imgs.length
 
 				pubnub.publish({
@@ -128,12 +135,19 @@ module.exports = {
 
 	warmCache: () ->
 		Image.count {target: false}, (err, count) ->
-			pageSize = 1000
+			console.log("Will send #{count} images")
+			pageSize = 200
 			nPages = Math.ceil(count / pageSize)
 			_.each [1..nPages], (page) ->
 				Image.paginate {target: false}, page, pageSize, (error, pageCount, paginatedResults, itemCount) ->
+					console.log("Publishing")
+
+					images = _.map(paginatedResults,(obj) -> return {original_img: obj.original_img})
+
+					console.log(JSON.stringify(images).length)
 					pubnub.publish({
 						channel: 'images'
-						message: paginatedResults
+						message: images
+						error: (err) -> console.log(err)
 					})
 }
