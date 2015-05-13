@@ -25,6 +25,7 @@ distributeLoad = (workload, workers) ->
 		workload.status = "Done"
 		workload.finalResult = theUltimateResult
 		workload.markModified('finalResult')
+		clearInterval(workload.distributeInterval)
 		workload.save()
 
 	newWorkingStatus = (m) ->
@@ -69,10 +70,7 @@ distributeLoad = (workload, workers) ->
 		message: newResults
 	})
 	
-	workerList = workers.uuids
 	numWorkers = workers.occupancy
-
-	chunkId = 0
 
 	console.log('gonna find images')
 	Image.find({target: false}, (err, images) ->
@@ -84,41 +82,55 @@ distributeLoad = (workload, workers) ->
 		workload.totalSize = images.length
 		workload.chunkSize = Math.min(workload.totalSize / numWorkers, 100)
 		console.log(workload.chunkSize)
-		workload.numChunks = workload.totalSize / workload.chunkSize	
-	# until workload complete
-		distributeAll = (workerList) ->
+		workload.numChunks = Math.ceil(workload.totalSize / workload.chunkSize)	
+	
+		distributeAll = (workers) ->
+			workerList = workers.uuids
+			console.log("Distributing " + (workload.numChunks - workload.numAssigned) + " chunks between " + workerList.length + " workers.")
+			chunkId = 0
 			while(workload.numAssigned < workload.numChunks && workerList.length > 0)
-			
-				imgs = _.map images[(chunkId*workload.chunkSize)..((chunkId+1)*workload.chunkSize - 1)], (obj) ->
-					return {
-						original_img: obj.original_img
-						personName: obj.personName
-						id: obj._id
-					}
+				if (! workload.assigned[chunkId]?) or workload.assigned[chunkId].assignTime < (Date.now() - 5000)
+					if workerList[0].state.status == 'Idle'
+						imgs = _.map images[(chunkId*workload.chunkSize)..((chunkId+1)*workload.chunkSize - 1)], (obj) ->
+							return {
+								original_img: obj.original_img
+								personName: obj.personName
+								id: obj._id
+							}
 
-				workSize = imgs.length
+						workSize = imgs.length
 
-				pubnub.publish({
-					channel: workerList[0]
-					message: {
-						targetImage: workload.targetImage
-						chunkId
-						images: imgs
-						workSize
-					}
-				})
-				workload.assigned[chunkId] = {
-					worker: workerList[0]
-					assignTime: Date.now()
-				}
-				chunkId += 1
-				workload.numAssigned += 1
-				_.pullAt(workerList, 0)
+						pubnub.publish({
+							channel: workerList[0].uuid
+							message: {
+								targetImage: workload.targetImage
+								chunkId
+								images: imgs
+								workSize
+							}
+						})
+						workload.assigned[chunkId] = {
+							worker: workerList[0].uuid
+							assignTime: Date.now()
+						}
+						workload.numAssigned += 1
+						chunkId += 1
+					_.pullAt(workerList, 0)
+				else
+					chunkId += 1
+
 			workload.markModified('assigned')
 			workload.status = 'Processing'
 			workload.save()
 
-		distributeAll(workerList)
+		distributeAll(workers)
+		workload.distributeInterval = setInterval ->
+			pubnub.here_now({
+				channel: 'work'
+				callback: distributeAll
+				state: true
+			})
+		, 1000
 		console.log(workload.assigned)
 	)
 
@@ -129,6 +141,7 @@ module.exports = {
 			pubnub.here_now({
 				channel: 'work'
 				callback: distribute
+				state: true
 			})
 
 		distributeToPresent()
