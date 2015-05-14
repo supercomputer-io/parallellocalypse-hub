@@ -27,6 +27,8 @@ Dispatcher =
 
 	start: (workload) ->
 		d = this
+		if !d.idle
+			return false
 		d.idle = false
 		d.workload = workload
 
