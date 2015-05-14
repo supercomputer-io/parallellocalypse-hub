@@ -10,7 +10,7 @@ Workload = require('../models/workload')
 dispatcher = require '../models/dispatcher'
 Image = require('../models/image')
 
-router.use(multer({ dest: './uploads/'}))
+router.use(multer({}))
 
 router.post '/images', (req, res, next) ->
 

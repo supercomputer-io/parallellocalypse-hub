@@ -11,7 +11,9 @@ require.config({
 		bluebird: '/bower_components/bluebird/js/browser/bluebird.min',
 		jquery: '/bower_components/jquery/dist/jquery.min',
 		bootstrap: '/bower_components/bootstrap/dist/js/bootstrap.min',
-		visibilityjs: '/bower_components/visibilityjs/lib/visibility.core'
+		visibilityjs: '/bower_components/visibilityjs/lib/visibility.core',
+		'ng-file-upload-shim': '/bower_components/ng-file-upload/ng-file-upload-shim.min',
+		'ng-file-upload': '/bower_components/ng-file-upload/ng-file-upload.min'
 	},
 	shim: {
 		angular: {
@@ -35,6 +37,9 @@ require.config({
 		},
 		visibilityjs: {
 			exports: 'Visibility'
+		},
+		'ng-file-upload': {
+			deps: [ 'angular', 'ng-file-upload-shim' ]
 		}
 	}
 })

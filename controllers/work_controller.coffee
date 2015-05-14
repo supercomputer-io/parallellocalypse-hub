@@ -10,7 +10,7 @@ Workload = require('../models/workload')
 dispatcher = require '../models/dispatcher'
 Image = require('../models/image')
 
-router.use(multer({ inMemory: true}))
+router.use(multer({}))
 
 router.all '/warmup', (req, res, next) ->
 	dispatcher.warmCache()

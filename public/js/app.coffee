@@ -4,17 +4,20 @@ define [
 	'restangular',
 	'cs!js/controllers/devices_controller',
 	'cs!js/controllers/download_controller',
+	'cs!js/controllers/work_controller',
 	'cs!js/helpers/create_poll',
 	'angular-route',
-	'angular-timeago'
-], (angular, _, Restangular, devicesController, downloadController, createPoll) ->
+	'angular-timeago',
+	'ng-file-upload'
+], (angular, _, Restangular, devicesController, downloadController, workController, createPoll) ->
 
 	angular
 		.module('app', [
 			'restangular',
 			'ngRoute',
 			'createPoll',
-			'yaru22.angular-timeago'
+			'yaru22.angular-timeago',
+			'ngFileUpload'
 		])
 
 		.run([ '$rootScope', 'Restangular' , ($rootScope, Restangular) ->
@@ -23,6 +26,9 @@ define [
 		])
 		.config [ '$routeProvider', ($routeProvider) ->
 			$routeProvider
+				.when '/work',
+					controller: workController
+					templateUrl: 'views/work.html'
 				.when '/download',
 					controller: downloadController
 					templateUrl: 'views/download.html'

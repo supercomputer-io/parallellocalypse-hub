@@ -25,6 +25,7 @@
     "bootstrap": "~3.3.4",
     "jquery": "~2.1.4",
     "visibilityjs": "~1.2.1",
-    "angular-timeago": "~0.1.10"
+    "angular-timeago": "~0.1.10",
+    "ng-file-upload": "~4.2.1"
   }
 }
