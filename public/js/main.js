@@ -2,6 +2,7 @@ require.config({
 	paths: {
 		angular: '/bower_components/angular/angular',
 		'angular-route': '/bower_components/angular-route/angular-route.min',
+		'angular-timeago': '/bower_components/angular-timeago/src/timeAgo',
 		cache: '/bower_components/require-cache/cache',
 		'coffee-script': './bower_components/coffee-script/extras/coffee-script',
 		cs: '/bower_components/require-cs/cs',
@@ -18,6 +19,9 @@ require.config({
 			deps: [ 'jquery' ]
 		},
 		'angular-route': {
+			deps: [ 'angular' ]
+		},
+		'angular-timeago': {
 			deps: [ 'angular' ]
 		},
 		bootstrap: {
