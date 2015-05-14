@@ -1,4 +1,4 @@
-mongoose = require('mongoose');
+mongoose = require('mongoose')
 attachments = require('mongoose-attachments-localfs')
 path = require('path')
 
@@ -14,7 +14,7 @@ ImageSchema = new mongoose.Schema({
 
 ImageSchema.plugin(attachments, {
 	directory: '/home/pablo/resin/parallellocalypse-hub/public/images',
-	storage : {
+	storage: {
 		providerName: 'localfs'
 	},
 	properties: {
@@ -31,9 +31,9 @@ ImageSchema.plugin(attachments, {
 		}
 	}
 })
-ImageSchema.virtual('original_img').get () ->
-	return path.join('original', path.basename(this.image.original.path));
+ImageSchema.virtual('original_img').get ->
+	return path.join('original', path.basename(this.image.original.path))
 
 Image = mongoose.model('image', ImageSchema)
 
-module.exports = Image;
+module.exports = Image

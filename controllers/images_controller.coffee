@@ -1,11 +1,11 @@
 express = require('express')
-router = express.Router();
+router = express.Router()
 resin = require('resin-sdk')
 fs = require('fs')
 config = require('../config')
 multer = require('multer')
 
-Device = require('../models/device');
+Device = require('../models/device')
 Workload = require('../models/workload')
 dispatcher = require '../models/dispatcher'
 Image = require('../models/image')
@@ -24,7 +24,7 @@ router.post '/images', (req, res, next) ->
 			if(err)
 				return next(err)
 			res.send('OK')
-	
+
 
 
 module.exports = router

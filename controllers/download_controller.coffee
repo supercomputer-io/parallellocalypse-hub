@@ -1,5 +1,5 @@
 express = require('express')
-router = express.Router();
+router = express.Router()
 
 request = require('request')
 url = require('url')
@@ -19,11 +19,10 @@ router.get '/download', (req, res) ->
 	})
 	downloadUrl = url.resolve('https://dashboard.resin.io/download', query)
 	options = {
-		headers:
-			Authorization: "Bearer " + config.token
+		headers: Authorization: 'Bearer ' + config.token
 		url: downloadUrl
-    }
-	
+	}
+
 	return request.get(options).pipe(res)
 
 module.exports = router

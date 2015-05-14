@@ -32,18 +32,18 @@ Dispatcher =
 		d.idle = false
 		d.workload = workload
 
-		finishWork = () ->
+		finishWork = ->
 			theUltimateResult = _.max(d.workload.results, 'value')
 			console.log('The ultimate result is:')
 			console.log(theUltimateResult)
-			console.log("Total elapsed time: " + (Date.now() - d.work.startTime) + "ms")
-			d.workload.status = "Done"
+			console.log('Total elapsed time: ' + (Date.now() - d.work.startTime) + 'ms')
+			d.workload.status = 'Done'
 			d.workload.finalResult = theUltimateResult
 			d.workload.markModified('finalResult')
 			clearInterval(d.work.distributeInterval)
 			clearInterval(d.work.saveInterval)
 			d.workload.save()
-			
+
 			_.defer ->
 				pubnub.unsubscribe({
 					channel: ['results', 'working']
@@ -63,10 +63,10 @@ Dispatcher =
 		newResults = (m) ->
 			console.log('Results')
 			console.log(m)
-			console.log("Elapsed time: " + (Date.now() - d.work.startTime) + "ms")
+			console.log('Elapsed time: ' + (Date.now() - d.work.startTime) + 'ms')
 			newResult = m.chunkId? && !d.workload.results[m.chunkId]?
 			if newResult
-				console.log("New result")
+				console.log('New result')
 				d.workload.results[m.chunkId] = m
 				d.workload.numResults += 1
 			d.work.workerAssigned[m.device] = null
@@ -90,7 +90,6 @@ Dispatcher =
 
 		distributeAll = (workers) ->
 			workerList = workers.uuids
-			console.log("Distributing " + (d.workload.numChunks - d.workload.numAssigned) + " chunks between " + workerList.length + " workers.")
 			chunkId = 0
 
 			expiredAssignments = _.filter d.workload.assigned, (chunk) ->
@@ -153,7 +152,7 @@ Dispatcher =
 				channel: 'results'
 				message: newResults
 			})
-			
+
 			numWorkers = workers.occupancy
 
 			console.log('gonna find images')
@@ -161,11 +160,11 @@ Dispatcher =
 				if err
 					console.log(err)
 					return err
-				
+
 				d.workload.totalSize = images.length
 				d.workload.chunkSize = Math.min( Math.ceil(d.workload.totalSize / numWorkers), 100)
 				console.log(d.workload.chunkSize)
-				d.workload.numChunks = Math.ceil(d.workload.totalSize / d.workload.chunkSize)	
+				d.workload.numChunks = Math.ceil(d.workload.totalSize / d.workload.chunkSize)
 
 				mappedImages = _.map images, (obj) ->
 					return {
@@ -198,14 +197,14 @@ Dispatcher =
 				d.workload.save()
 		, 1000
 
-	warmCache: () ->
+	warmCache: ->
 		Image.count {target: false}, (err, count) ->
 			console.log("Will send #{count} images")
 			pageSize = 200
 			nPages = Math.ceil(count / pageSize)
 			_.each [1..nPages], (page) ->
 				Image.paginate {target: false}, page, pageSize, (error, pageCount, paginatedResults, itemCount) ->
-					console.log("Publishing")
+					console.log('Publishing')
 
 					images = _.map(paginatedResults,(obj) -> return {original_img: obj.original_img})
 

@@ -1,4 +1,4 @@
-mongoose = require('mongoose');
+mongoose = require('mongoose')
 
 Workload = mongoose.model 'workload',
 	targetImage: {
@@ -18,4 +18,4 @@ Workload = mongoose.model 'workload',
 	results: []
 	finalResult: mongoose.Schema.Types.Mixed
 
-module.exports = Workload;
+module.exports = Workload
