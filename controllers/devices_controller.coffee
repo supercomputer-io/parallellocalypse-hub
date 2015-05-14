@@ -1,10 +1,10 @@
 express = require('express')
-router = express.Router();
+router = express.Router()
 resin = require('resin-sdk')
 fs = require('fs')
 config = require('../config')
 
-Device = require('../models/device');
+Device = require('../models/device')
 
 router.post '/devices', (req, res) ->
 	device = new Device(req.body)
@@ -26,7 +26,7 @@ router.get '/devices/by_mac_address/:mac', (req, res) ->
 	Device.find {macAddress: req.params.mac}, (err, device) ->
 		if err or !device[0]
 			console.log(err) if err
-			res.status(404).send(error: "Not found")
+			res.status(404).send(error: 'Not found')
 		else
 			resin.models.device.getByUUID device[0].resinId, (err, resinDevice) ->
 				console.log(err) if err?
@@ -37,7 +37,7 @@ router.get '/devices/:id', (req, res) ->
 	Device.find {_id: req.params.id}, (err, device) ->
 		if err or !device[0]
 			console.log(err)
-			res.status(404).send(error: "Not found")
+			res.status(404).send(error: 'Not found')
 		else
 			resin.models.device.getByUUID device[0].resinId, (err, resinDevice) ->
 				console.log(err) if err?

@@ -9,7 +9,7 @@ semaphore = 0
 
 convertFile = (path, file) ->
 	if semaphore < 100
-		
+
 		fileparts = file.split('.')
 		fileName = fileparts[0]
 		fileExt = fileparts[1]
@@ -33,7 +33,7 @@ searchDir = (path) ->
 		files.forEach (file) ->
 			convertFile(path, file)
 
-console.log("Reading dir")
+console.log('Reading dir')
 fs.readdir basePath, (err, directories) ->
 	directories.forEach (path) ->
 		searchDir(path)

@@ -1,7 +1,6 @@
 define [
-], () ->
-	return ['$scope', 
+], ->
+	return ['$scope',
 		($scope) ->
 
 	]
-	

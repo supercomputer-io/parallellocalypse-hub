@@ -1,4 +1,4 @@
-mongoose = require('mongoose');
+mongoose = require('mongoose')
 
 Device = mongoose.model 'device',
 	resinId:
@@ -11,7 +11,7 @@ Device = mongoose.model 'device',
 		required: true
 	status:
 		type: String
-		default: "Idle"
+		default: 'Idle'
 	progress:
 		type: Number
 		default: 0
@@ -26,4 +26,4 @@ Device = mongoose.model 'device',
 		type: mongoose.Schema.Types.Mixed
 
 
-module.exports = Device;
+module.exports = Device

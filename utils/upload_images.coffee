@@ -28,10 +28,9 @@ searchDir = (path) ->
 	fs.readdir basePath + '/' + path, (err, files) ->
 		files.forEach (file) ->
 			sendFile(path, file, personName)
-			
 
-console.log("Reading dir")
+
+console.log('Reading dir')
 fs.readdir basePath, (err, directories) ->
 	directories.forEach (path) ->
 		searchDir(path)
-		

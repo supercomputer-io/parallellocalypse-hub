@@ -9,7 +9,7 @@ mongooseURL = process.env.MONGOLAB_URI or process.env.MONGOHQ_URL or 'mongodb://
 mongoose.connect mongooseURL, (err) ->
 	if err
 		throw err
-	console.log("Connected to MongoDB")
+	console.log('Connected to MongoDB')
 
 mongoose.plugin(require('mongoose-paginate'))
 

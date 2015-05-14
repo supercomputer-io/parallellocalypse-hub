@@ -1,11 +1,11 @@
 express = require('express')
-router = express.Router();
+router = express.Router()
 resin = require('resin-sdk')
 fs = require('fs')
 config = require('../config')
 multer = require('multer')
 
-Device = require('../models/device');
+Device = require('../models/device')
 Workload = require('../models/workload')
 dispatcher = require '../models/dispatcher'
 Image = require('../models/image')
@@ -19,7 +19,7 @@ router.all '/warmup', (req, res, next) ->
 router.post '/work', (req, res, next) ->
 	if dispatcher.idle
 		workload = new Workload({
-			status: "Starting",
+			status: 'Starting',
 			numAssigned: 0,
 			assigned: []
 		})
@@ -38,7 +38,7 @@ router.post '/work', (req, res, next) ->
 					dispatcher.start workload
 					res.send(workload)
 	else
-		res.send({error: "Dispatcher is busy"})
+		res.send({error: 'Dispatcher is busy'})
 
 
 router.get '/work', (req, res, next) ->
