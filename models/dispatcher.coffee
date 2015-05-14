@@ -13,6 +13,8 @@ ASSIGNMENT_EXPIRATION = 6000
 
 Dispatcher =
 
+	idle: true
+
 	work: {
 		images: []
 		workerAssigned: {}
@@ -25,7 +27,9 @@ Dispatcher =
 
 	start: (workload) ->
 		d = this
+		d.idle = false
 		d.workload = workload
+
 		finishWork = () ->
 			theUltimateResult = _.max(d.workload.results, 'value')
 			console.log('The ultimate result is:')
@@ -42,6 +46,7 @@ Dispatcher =
 				pubnub.unsubscribe({
 					channel: ['results', 'working']
 				})
+				d.idle = true
 
 
 		newWorkingStatus = (m) ->
