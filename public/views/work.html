@@ -1,20 +1,35 @@
 <div class='col-xs-12'>
 	<div class='row'>
-		<form class='form form-horizontal' ng-submit="uploadFile()">
-			<div class='form-group'>
-				<label for='input-image'>Image to compare to:</label>
-				<input type="file" id='input-image' ng-model='file' ngf-select /> 
+		<div class='online-devices col-sm-3'>
+			<div class='uibox'>
+				<h4>Online devices:</h4>
+				<h2>{{numDevices}}</h2>
 			</div>
-			<button class='btn btn-default' type="submit">Work!</button>
-		</form>
-	</div>
-	<div class='row' ng-if='work.status != null'>
-		<div class='col-sm-6'>
-			<img ng-src='{{ "/images/" + work.targetImage.original_img }}'>
 		</div>
-		<div class='col-sm-6'>
-			<img ng-src='{{ result.image }}'>
-			<h2>{{result.name}}</h2>
+		<div class='images-per-device col-sm-3'>
+			<div class='uibox'>
+			</div>
+		</div>
+		<div class='images-and-name col-sm-6'>
+			<div class='uibox'>
+				<div class='col-sm-4' ngf-select ngf-drop accept='image/*' ngf-accept='accept' ng-model='file' ngf-selec>
+					<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>
+					<div ng-show="!work.status" class='drop-box' />
+				</div>
+				<div class='col-sm-8'>
+					<h2 ng-if='result.name'>{{result.name}}</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='work-progress col-sm-8'>
+			<div class='uibox'>
+			</div>
+		</div>
+		<div class='locations col-sm-4'>
+			<div class='uibox'>
+			</div>
 		</div>
 	</div>
 </div>

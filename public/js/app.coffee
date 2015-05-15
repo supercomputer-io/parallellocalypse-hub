@@ -8,8 +8,9 @@ define [
 	'cs!js/helpers/create_poll',
 	'angular-route',
 	'angular-timeago',
-	'ng-file-upload'
-], (angular, _, Restangular, devicesController, downloadController, workController, createPoll) ->
+	'ng-file-upload',
+	'pubnub-angular'
+], (angular, _, Restangular, devicesController, downloadController, workController, createPoll, pubnub) ->
 
 	angular
 		.module('app', [
@@ -17,16 +18,17 @@ define [
 			'ngRoute',
 			'createPoll',
 			'yaru22.angular-timeago',
-			'ngFileUpload'
+			'ngFileUpload',
+			'pubnub.angular.service'
 		])
 
-		.run([ '$rootScope', 'Restangular' , ($rootScope, Restangular) ->
-
-
+		.run([ '$rootScope', 'Restangular' , 'PubNub', ($rootScope, Restangular, PubNub) ->
+			PubNub.init
+				subscribe_key: 'sub-c-1faf9860-f5c0-11e4-b21e-02ee2ddab7fe'
 		])
 		.config [ '$routeProvider', ($routeProvider) ->
 			$routeProvider
-				.when '/work',
+				.when '/dashboard',
 					controller: workController
 					templateUrl: 'views/work.html'
 				.when '/download',

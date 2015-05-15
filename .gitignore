@@ -33,3 +33,4 @@ public/bower_components
 public/images
 .bower-cache
 .bower-registry
+.bower-tmp

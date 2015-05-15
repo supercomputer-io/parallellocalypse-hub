@@ -17,5 +17,7 @@ Workload = mongoose.model 'workload',
 	assigned: []
 	results: []
 	finalResult: mongoose.Schema.Types.Mixed
+	startTime: Date
+	finishTime: Date
 
 module.exports = Workload

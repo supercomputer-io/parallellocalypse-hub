@@ -32,17 +32,28 @@ Dispatcher =
 		d.idle = false
 		d.workload = workload
 
+		publishWorkload = ->
+			pubnub.publish({
+				channel: 'status'
+				message: workload: d.workload
+				error: (err) -> console.log(err)
+			})
+
 		finishWork = ->
+			d.work.workloadModified = false
+			clearInterval(d.work.distributeInterval)
+			clearInterval(d.work.saveInterval)
 			theUltimateResult = _.max(d.workload.results, 'value')
 			console.log('The ultimate result is:')
 			console.log(theUltimateResult)
-			console.log('Total elapsed time: ' + (Date.now() - d.work.startTime) + 'ms')
+			console.log('Total elapsed time: ' + (Date.now() - d.workload.startTime) + 'ms')
+			d.workload.finishTime = Date.now()
 			d.workload.status = 'Done'
 			d.workload.finalResult = theUltimateResult
 			d.workload.markModified('finalResult')
-			clearInterval(d.work.distributeInterval)
-			clearInterval(d.work.saveInterval)
+
 			d.workload.save()
+			publishWorkload()
 
 			_.defer ->
 				pubnub.unsubscribe({
@@ -63,7 +74,7 @@ Dispatcher =
 		newResults = (m) ->
 			console.log('Results')
 			console.log(m)
-			console.log('Elapsed time: ' + (Date.now() - d.work.startTime) + 'ms')
+			console.log('Elapsed time: ' + (Date.now() - d.workload.startTime) + 'ms')
 			newResult = m.chunkId? && !d.workload.results[m.chunkId]?
 			if newResult
 				console.log('New result')
@@ -87,6 +98,7 @@ Dispatcher =
 					finishWork()
 				else
 					d.work.workloadModified = true
+					publishWorkload()
 
 		distributeAll = (workers) ->
 			workerList = workers.uuids
@@ -132,11 +144,10 @@ Dispatcher =
 					chunkId += 1
 
 			d.workload.markModified('assigned')
-			d.workload.status = 'Processing'
 			d.work.workloadModified = true
 
 		startDistribution = (workers) ->
-			d.work.startTime = Date.now()
+			d.workload.startTime = Date.now()
 
 			d.workload.results = []
 			d.workload.numResults = 0
@@ -176,6 +187,7 @@ Dispatcher =
 				d.work.images = _.chunk(mappedImages, d.workload.chunkSize)
 				d.work.workerAssigned = {}
 
+				d.workload.status = 'Processing'
 				distributeAll(workers)
 				d.work.distributeInterval = setInterval ->
 					pubnub.here_now({

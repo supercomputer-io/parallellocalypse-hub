@@ -13,7 +13,9 @@ require.config({
 		bootstrap: '/bower_components/bootstrap/dist/js/bootstrap.min',
 		visibilityjs: '/bower_components/visibilityjs/lib/visibility.core',
 		'ng-file-upload-shim': '/bower_components/ng-file-upload/ng-file-upload-shim.min',
-		'ng-file-upload': '/bower_components/ng-file-upload/ng-file-upload.min'
+		'ng-file-upload': '/bower_components/ng-file-upload/ng-file-upload.min',
+		pubnub: '/bower_components/pubnub/web/pubnub.min',
+		'pubnub-angular': '/bower_components/pubnub-angular/lib/pubnub-angular'
 	},
 	shim: {
 		angular: {
@@ -40,6 +42,9 @@ require.config({
 		},
 		'ng-file-upload': {
 			deps: [ 'angular', 'ng-file-upload-shim' ]
+		},
+		'pubnub-angular': {
+			deps: [ 'angular', 'pubnub' ]
 		}
 	}
 })
