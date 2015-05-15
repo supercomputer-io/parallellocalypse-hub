@@ -1,7 +1,7 @@
-request = require('superagent')
+request = require('superagent').agent()
 fs = require('fs')
 _ = require('lodash')
-
+config = require('../config')
 url = process.env.HUB_URL || 'http://localhost:8080'
 
 basePath = process.env.BASE_PATH
@@ -31,6 +31,13 @@ searchDir = (path) ->
 
 
 console.log('Reading dir')
-fs.readdir basePath, (err, directories) ->
-	directories.forEach (path) ->
-		searchDir(path)
+
+request.post(url + '/login')
+.send(config.admin)
+.end (err, res) ->
+	if res.statusCode == 200
+		fs.readdir basePath, (err, directories) ->
+			directories.forEach (path) ->
+				searchDir(path)
+	else
+		console.log('Incorrect login')

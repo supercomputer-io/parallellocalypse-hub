@@ -20,6 +20,11 @@
 							Resin Parallellocalypse
 						</span>
 					</a>
+					<div class='pull-right' ng-if='authenticated'>
+						<ul class='nav'>
+							<li><a  ng-click='logout()'>Logout</a></li>
+						</ul>
+					</div>
 				</div>
 			</nav>
 		</div>
