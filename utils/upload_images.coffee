@@ -7,9 +7,10 @@ url = process.env.HUB_URL || 'http://localhost:8080'
 basePath = process.env.BASE_PATH
 
 semaphore = 0
+maxFiles = parseInt(process.env.MAX_FILES) or 100
 
 sendFile = (path, file, personName) ->
-	if semaphore < 100
+	if semaphore < maxFiles
 		semaphore += 1
 		req = request.post(url + '/api/images')
 		req.field('name', personName).attach('image', basePath + '/' + path + '/' + file)
@@ -35,7 +36,7 @@ console.log('Reading dir')
 request.post(url + '/login')
 .send(config.admin)
 .end (err, res) ->
-	if res.statusCode == 200
+	if res.statusCode == 200 || res.statusCode == 304
 		fs.readdir basePath, (err, directories) ->
 			directories.forEach (path) ->
 				searchDir(path)

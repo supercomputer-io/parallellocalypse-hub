@@ -23,10 +23,14 @@ body {
 .uibox {
 	background: #353534;
 	color: #FFFFFF;
-	min-height: 140px;
+	min-height: 165px;
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 20px;
+}
+
+.number-in-box {
+	text-align: center;
 }
 
 .navbar-default {

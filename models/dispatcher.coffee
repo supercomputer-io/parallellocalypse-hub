@@ -145,6 +145,8 @@ Dispatcher =
 
 			d.workload.markModified('assigned')
 			d.work.workloadModified = true
+			publishWorkload()
+
 
 		startDistribution = (workers) ->
 			d.workload.startTime = Date.now()
@@ -153,6 +155,7 @@ Dispatcher =
 			d.workload.numResults = 0
 			d.workload.status = 'Distributing'
 			d.work.workloadModified = true
+			publishWorkload()
 
 			pubnub.subscribe({
 				channel: 'working'

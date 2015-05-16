@@ -3,11 +3,17 @@
 		<div class='online-devices col-sm-3'>
 			<div class='uibox'>
 				<h4>Online devices:</h4>
-				<h2>{{numDevices}}</h2>
+				<div class='number-in-box'>
+					<h1>{{numDevices}}</h1>
+				</div>
 			</div>
 		</div>
 		<div class='images-per-device col-sm-3'>
 			<div class='uibox'>
+				<h4>Elapsed time:</h4>
+				<div class='number-in-box'>
+					<h1>{{minutes}}:{{seconds}}</h1>
+				</div>
 			</div>
 		</div>
 		<div class='images-and-name col-sm-6'>
@@ -25,6 +31,13 @@
 	<div class='row'>
 		<div class='work-progress col-sm-8'>
 			<div class='uibox'>
+				<table class='table table-bordered' style='background-color: blue'>
+					<tbody>
+						<tr style='height: 50px;'>
+							<td ng-repeat='chunk in chunks track by $index' ng-style="chunkStyle[$index]" style='width: 15px; height: 20px;'></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div class='locations col-sm-4'>
