@@ -9,6 +9,11 @@ if process.env.NODE_ENV == 'production'
 			email: process.env.ADMIN_EMAIL
 			password: process.env.ADMIN_PASSWORD
 		}
+		s3: {
+			key: process.env.S3_KEY
+			secret: process.env.S3_SECRET
+			bucket: process.env.S3_BUCKET
+		}
 	}
 else
 	module.exports = JSON.parse(fs.readFileSync('config.json', encoding: 'utf-8'))
