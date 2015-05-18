@@ -22,7 +22,7 @@ body {
 }
 
 .uibox {
-	background: #353534;
+	background: #15354C;
 	color: #FFFFFF;
 	min-height: 165px;
 	width: 100%;
@@ -30,18 +30,29 @@ body {
 	margin-bottom: 20px;
 }
 
+.table-header-box {
+	background: #15354C;
+	border-radius: 5px 5px 0px 0px;
+	font-family: OpenSans-Bold,sans-serif;
+	font-size: 17px;
+	color: #FFFFFF;
+	line-height: 23px;
+	padding: 13px;
+}
+
 .number-in-box {
 	text-align: center;
 }
 
 .navbar-default {
-	background: #353534;
-	border-color: #353534;
+	background: #15354C;
+	border-color: #15354C;
 }
 
 .horizontal-line {
 	opacity: 0.18;
 	border: 1px solid #979797;
+	margin-bottom: 40px;
 }
 
 .mac-input {
@@ -88,4 +99,30 @@ body {
 	line-height: 26px;
 	margin-top: 10px;
 	margin-bottom: 5px;
+}
+
+.ui-table>thead>tr>th {
+	opacity: 0.34;
+	font-family: OpenSans-Bold,sans-serif;
+	font-size: 10px;
+	color: #3B3B3B;
+	letter-spacing: 1px;
+	border: 1px solid rgba( 151, 151, 151, 0.22);
+}
+
+.ui-table>thead>tr {
+	background: #E9E9E9;
+	line-height: 14px;
+}
+
+.ui-table>tbody {
+	background: #FFFFFF;
+}
+
+.ui-table>tbody>tr>td {
+	font-family: OpenSans,sans-serif;
+	font-size: 15px;
+	color: #3B3B3B;
+	line-height: 20px;
+	border: 1px solid rgba( 151, 151, 151, 0.22);
 }

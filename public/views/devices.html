@@ -11,11 +11,30 @@
 	</div>
 	<hr class='horizontal-line'>
 	<div class="row" ng-if="device != null">
-		<h2>{{ device.resinDevice.name }}</h2>
-		<p ng-show="device.resinDevice.is_online">Status: {{ device.resinDevice.status }}</p>
-		<p ng-hide="device.resinDevice.is_online">Status: Offline (last seen: {{ device.resinDevice.last_seen_time | timeAgo }})</p>
+		<div class='table-header-box'>
+			Device
+		</div>
+		<table class='ui-table table'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>MAC Address</th>
+					<th>Images processed</th>
+					<th>Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td ng-show="device.resinDevice.is_online">Status: {{ device.resinDevice.status }}</td>
+					<td ng-hide="device.resinDevice.is_online">Status: Offline<span ng-if="device.resinDevice.last_seen_time"> (last seen: {{ device.resinDevice.last_seen_time | timeAgo }})</span></td>
+					<td>{{device.device.macAddress}}</td>
+					<td>{{device.device.totalProcessed}}</td>
+					<td>{{device.device.location.city}}, {{device.device.location.country}}</td>
+
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div class="row" ng-if="device == null">
-		<p>No device yet...</p>
 	</div>
 </div>
