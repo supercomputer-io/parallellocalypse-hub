@@ -2,6 +2,7 @@
   "name": "parallellocalypse-hub",
   "version": "1.0.0",
   "description": "",
+  "main": "server.coffee",
   "scripts": {
     "start": "./node_modules/.bin/coffee server.coffee",
     "postinstall": "./node_modules/.bin/bower install",
