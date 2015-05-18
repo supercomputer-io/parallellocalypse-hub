@@ -1,7 +1,8 @@
 body {
 	padding-top: 70px;
-	background: #0A0A05;
-	font-family: "Open Sans",Arial,sans-serif
+	background: #0A1F2E;
+	font-family: OpenSans-Semibold;
+	font-weight: 500;
 }
 
 .logo {
@@ -36,4 +37,55 @@ body {
 .navbar-default {
 	background: #353534;
 	border-color: #353534;
+}
+
+.horizontal-line {
+	opacity: 0.18;
+	border: 1px solid #979797;
+}
+
+.mac-input {
+	/*opacity: 0.19;*/
+	font-family: OpenSans-Semibold,sans-serif;
+	font-size: 48px;
+	color: #FFFFFF;
+	background: #0A1F2E;
+	border: 0px;
+	width: 100%;
+	line-height: 65px;
+}
+
+.mac-search-form {
+	margin-top: 40px;
+}
+.mac-input::-webkit-input-placeholder {
+	opacity: 0.19;
+	font-family: OpenSans-Semibold,sans-serif;
+	font-size: 48px;
+	color: #FFFFFF;
+}
+
+.mac-input::-moz-placeholder {
+	opacity: 0.19;
+	font-family: OpenSans-Semibold,sans-serif;
+	font-size: 48px;
+	color: #FFFFFF;
+}
+
+.mac-input:focus {
+	outline: 0;
+}
+
+.mac-search-button {
+	background: #FFFFFF;
+	border-radius: 3px;
+	width: 178px;
+	height: 54px;
+	font-family: OpenSans-Bold,sans-serif;
+	font-size: 19px;
+	color: #020D15;
+	letter-spacing: 1px;
+	line-height: 26px;
+	margin-top: 10px;
+	margin-bottom: 5px;
 }
