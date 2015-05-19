@@ -1,5 +1,6 @@
 mongoose = require('mongoose')
-attachments = require('mongoose-attachments-localfs')
+attachments = require('mongoose-attachments-aws2js')
+config = require('../config')
 path = require('path')
 
 ImageSchema = new mongoose.Schema({
@@ -13,9 +14,15 @@ ImageSchema = new mongoose.Schema({
 })
 
 ImageSchema.plugin(attachments, {
-	directory: '/home/pablo/resin/parallellocalypse-hub/public/images',
+	directory: 'images',
 	storage: {
-		providerName: 'localfs'
+		providerName: 'aws2js'
+		options: {
+			key: config.s3.key,
+			secret: config.s3.secret,
+			bucket: config.s3.bucket,
+			endpoint: 'https://' + config.s3.bucket + '.s3-website-us-east-1.amazonaws.com',
+		}
 	},
 	properties: {
 		image: {
