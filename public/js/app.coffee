@@ -52,8 +52,8 @@ workController, loginController, createPoll, Auth) ->
 					controller: downloadController
 					templateUrl: 'views/download.html'
 				.when '/',
-					controller: devicesController
-					templateUrl: 'views/devices.html'
+					controller: downloadController
+					templateUrl: 'views/download.html'
 				.when '/devices',
 					controller: devicesController
 					templateUrl: 'views/devices.html'

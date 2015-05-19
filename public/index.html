@@ -11,18 +11,20 @@
 		<div class="header">
 			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
-					<a class="navbar-brand">
+					<a class="navbar-brand" href='{{ authenticated ? "#/dashboard" : "#/" }}'>
 						<span>
 							<img src='/img/logo.svg' class='logo'>
 						</span>
-					</a>
-					<a class="navbar-brand">
 						<span>
-							Resin Parallellocalypse
+							<img src='/img/parallella.svg' class='logo'>
 						</span>
 					</a>
+					<ul class="nav navbar-nav">
+						<li ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
+						<li><a href='#/devices'>Search device</a></li>
+					</ul>
 					<div class='pull-right' ng-if='authenticated'>
-						<ul class='nav'>
+						<ul class='nav navbar-nav'>
 							<li><a  ng-click='logout()'>Logout</a></li>
 						</ul>
 					</div>
