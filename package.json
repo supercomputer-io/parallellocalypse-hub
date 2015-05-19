@@ -28,7 +28,7 @@
     "lodash": "^3.8.0",
     "mongoose": "^4.0.2",
     "mongoose-attachments": "^0.1.0",
-    "mongoose-attachments-aws2js": "^1.0.0",
+    "mongoose-attachments-aws2js": "git://github.com/heapsource/mongoose-attachments-aws2js.git",
     "mongoose-paginate": "^3.1.3",
     "multer": "^0.1.8",
     "passport": "^0.2.1",

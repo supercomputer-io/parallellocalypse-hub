@@ -20,7 +20,8 @@ ImageSchema.plugin(attachments, {
 		options: {
 			key: config.s3.key,
 			secret: config.s3.secret,
-			bucket: config.s3.bucket
+			bucket: config.s3.bucket,
+			endpoint: 'https://' + config.s3.bucket + '.s3-website-us-east-1.amazonaws.com',
 		}
 	},
 	properties: {
