@@ -9,6 +9,9 @@ router.get '/download', (req, res) ->
 	parameters = {
 		appId: config.appId,
 		network: req.params.network
+		processorType: req.params.processorType
+		coprocessorCore: req.params.coprocessorCore
+		hdmi: req.params.hdmi
 	}
 	if req.params.network == 'wifi'
 		parameters.wifiSsid = req.params.wifiSsid

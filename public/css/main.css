@@ -130,3 +130,13 @@ body {
 .flag {
 	margin-right: 10px;
 }
+
+.download-form {
+	background: #15354C;
+	color: #FFFFFF;
+	min-height: 165px;
+	width: 100%;
+	padding: 15px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
