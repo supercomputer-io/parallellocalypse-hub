@@ -119,7 +119,7 @@ Dispatcher =
 					if workerList[0].state.status == 'Idle' && ! d.work.workerAssigned[workerList[0].uuid]?
 						images = d.work.images[chunkId]
 						workSize = images.length
-						targetImage = d.workload.targetImage
+						targetImage = d.workload.targetImage.path
 
 						pubnub.publish({
 							channel: workerList[0].uuid
@@ -182,9 +182,9 @@ Dispatcher =
 
 				mappedImages = _.map images, (obj) ->
 					return {
-						original_img: obj.original_img
+						uuid: obj.uuid
 						personName: obj.personName
-						id: obj._id
+						#id: obj._id
 					}
 
 				d.work.images = _.chunk(mappedImages, d.workload.chunkSize)
@@ -215,13 +215,13 @@ Dispatcher =
 	warmCache: ->
 		Image.count {target: false}, (err, count) ->
 			console.log("Will send #{count} images")
-			pageSize = 200
+			pageSize = 100
 			nPages = Math.ceil(count / pageSize)
 			_.each [1..nPages], (page) ->
 				Image.paginate {target: false}, page, pageSize, (error, pageCount, paginatedResults, itemCount) ->
 					console.log('Publishing')
 
-					images = _.map(paginatedResults,(obj) -> return {original_img: obj.original_img})
+					images = _.map(paginatedResults,(obj) -> return {path: obj.path, uuid: obj.uuid, personName: obj.personName, id: obj._id})
 
 					console.log(JSON.stringify(images).length)
 					pubnub.publish({
