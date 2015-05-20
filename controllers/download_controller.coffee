@@ -7,7 +7,7 @@ config = require('../config')
 
 settings = require('resin-settings-client')
 
-if settings.get("remoteUrl") == 'https://staging.resin.io'
+if settings.get('remoteUrl') == 'https://staging.resin.io'
 	apiUrl = 'https://api.staging.resin.io'
 else
 	apiUrl = 'https://api.resin.io'

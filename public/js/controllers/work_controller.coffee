@@ -33,7 +33,7 @@ define [
 
 				populateWork = (work) ->
 					$scope.work = work
-					
+
 					if $scope.work.status == 'Done'
 						$scope.result =
 							image: '/images/' + $scope.work.finalResult.imageUrl
@@ -47,7 +47,7 @@ define [
 					callback: (data) ->
 						console.log(data)
 						populateWork(data.workload)
-				
+
 				PubNub.ngSubscribe
 					channel: 'results'
 					callback: (result) ->
@@ -66,7 +66,7 @@ define [
 							$scope.chunks = {}
 
 							$scope.chunkStyle = {}
-							
+
 							_.each $scope.devices, (dev) ->
 								if dev.state.status == 'Idle'
 									$scope.chunks[dev.uuid] = 'blue'
@@ -114,5 +114,5 @@ define [
 				#poll = createPoll($scope.getWork)
 				#poll.start()
 				$scope.getWork()
-				
+
 	]

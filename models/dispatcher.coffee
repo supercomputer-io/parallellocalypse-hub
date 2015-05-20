@@ -221,7 +221,13 @@ Dispatcher =
 				Image.paginate {target: false}, page, pageSize, (error, pageCount, paginatedResults, itemCount) ->
 					console.log('Publishing')
 
-					images = _.map(paginatedResults,(obj) -> return {path: obj.path, uuid: obj.uuid, personName: obj.personName, id: obj._id})
+					images = _.map paginatedResults, (obj) ->
+						return {
+							path: obj.path
+							uuid: obj.uuid
+							personName: obj.personName
+							id: obj._id
+						}
 
 					console.log(JSON.stringify(images).length)
 					pubnub.publish({
