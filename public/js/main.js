@@ -1,5 +1,5 @@
 require.config({
-	waitSeconds: 20,
+	waitSeconds: 60,
 	paths: {
 		angular: '/bower_components/angular/angular',
 		'angular-route': '/bower_components/angular-route/angular-route.min',
