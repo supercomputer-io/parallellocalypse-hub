@@ -1,47 +1,51 @@
-<div class='col-xs-12'>
-	<div class='row'>
-		<div class='online-devices col-sm-3'>
-			<div class='uibox'>
-				<h4>Online devices:</h4>
-				<div class='number-in-box'>
-					<h1>{{numDevices}}</h1>
+<div class="container">
+	<div class="row">
+		<div class='col-xs-12'>
+			<div class='row'>
+				<div class='images-and-name col-sm-6'>
+					<div class='uibox'>
+						<div class='col-sm-4' ngf-select ngf-drop accept='image/*' ngf-accept='accept' ng-model='file' ngf-selec>
+							<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>
+							<div ng-show="!work.status" class='drop-box' />
+						</div>
+						<div class='col-sm-8'>
+							<h2 ng-if='result.name'>{{result.name}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class='online-devices col-sm-3'>
+					<div class='uibox'>
+						<h4>Online devices:</h4>
+						<div class='number-in-box'>
+							<h1>{{numDevices}}</h1>
+						</div>
+					</div>
+				</div>
+				<div class='images-per-device col-sm-3'>
+					<div class='uibox'>
+						<h4>Images per device:</h4>
+						<div class='number-in-box'>
+							<h1>{{work.chunkSize}}</h1>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class='images-per-device col-sm-3'>
-			<div class='uibox'>
-				<h4>Elapsed time:</h4>
-				<div class='number-in-box'>
-					<h1>{{minutes}}:{{seconds}}</h1>
+			<div class='row'>
+				<div class='work-progress col-sm-8'>
+					<div class='uibox'>
+						<table class='table table-bordered' style='background-color: blue'>
+							<tbody>
+								<tr style='height: 50px;'>
+									<td ng-repeat='chunk in chunks track by $index' ng-style="chunkStyle[$index]" style='width: 15px; height: 20px;'></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class='images-and-name col-sm-6'>
-			<div class='uibox'>
-				<div class='col-sm-4' ngf-select ngf-drop accept='image/*' ngf-accept='accept' ng-model='file' ngf-selec>
-					<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>
-					<div ng-show="!work.status" class='drop-box' />
+				<div class='locations col-sm-4'>
+					<div class='uibox'>
+					</div>
 				</div>
-				<div class='col-sm-8'>
-					<h2 ng-if='result.name'>{{result.name}}</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class='row'>
-		<div class='work-progress col-sm-8'>
-			<div class='uibox'>
-				<table class='table table-bordered' style='background-color: blue'>
-					<tbody>
-						<tr style='height: 50px;'>
-							<td ng-repeat='chunk in chunks track by $index' ng-style="chunkStyle[$index]" style='width: 15px; height: 20px;'></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class='locations col-sm-4'>
-			<div class='uibox'>
 			</div>
 		</div>
 	</div>

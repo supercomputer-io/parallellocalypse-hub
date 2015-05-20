@@ -53,7 +53,7 @@ workController, loginController, createPoll, Auth) ->
 					templateUrl: 'views/download.html'
 				.when '/',
 					controller: downloadController
-					templateUrl: 'views/download.html'
+					templateUrl: 'views/landing.html'
 				.when '/devices',
 					controller: devicesController
 					templateUrl: 'views/devices.html'

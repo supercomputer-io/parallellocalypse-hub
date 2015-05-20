@@ -1,13 +1,17 @@
 body {
-	padding-top: 70px;
+	padding-top: 90px;
 	background: #0A1F2E;
 	font-family: OpenSans-Semibold;
 	font-weight: 500;
 }
 
 .logo {
-	height: 40px;
+	height: 30px;
 	margin-top: -10px;
+}
+
+.landing-jumbotron {
+	margin-top: -42px;
 }
 
 .drop-box {
@@ -24,10 +28,15 @@ body {
 .uibox {
 	background: #15354C;
 	color: #FFFFFF;
-	min-height: 165px;
+	min-height: 140px;
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 20px;
+}
+
+.uibox > h4 {
+	opacity: 0.8;
+	margin-left: 20px;
 }
 
 .table-header-box {
@@ -42,11 +51,36 @@ body {
 
 .number-in-box {
 	text-align: center;
+	font-size: 48;
+}
+
+.navbar {
+	height: 48px;
+	min-height: 48px;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+	margin-left: 0px;
 }
 
 .navbar-default {
-	background: #15354C;
-	border-color: #15354C;
+	background: #FFFFFF;
+	border-color: #FFFFFF;
+}
+
+.navbar-brand {
+	height: 40px;
+}
+
+.nav > li > a {
+	border-left: 1px solid rgba( 151, 151, 151, 0.22);
+	width: 115px;
+	text-align: center;
+}
+
+.nav > li:last-child > a {
+	border-left: 1px solid rgba( 151, 151, 151, 0.22);
+	border-right: 1px solid rgba( 151, 151, 151, 0.22);
 }
 
 .horizontal-line {
