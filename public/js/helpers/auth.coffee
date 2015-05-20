@@ -23,7 +23,10 @@ define [
 				, ->
 					# user not authenticated
 					console.log('Not logged in')
-					auth.logout()
+					if callback
+						callback(false)
+					else
+						auth.logout()
 
 			logout: ->
 				$rootScope.authenticated = false

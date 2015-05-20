@@ -4,7 +4,7 @@
 			<div class='row'>
 				<div class='images-and-name col-sm-6'>
 					<div class='uibox'>
-						<div class='col-sm-4' ngf-select ngf-drop accept='image/*' ngf-accept='accept' ng-model='file' ngf-selec>
+						<div ng-if='authenticated' class='col-sm-4' ngf-select ngf-drop accept='image/*' ngf-accept='accept' ng-model='file' ngf-selec>
 							<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>
 							<div ng-show="!work.status" class='drop-box' />
 						</div>
