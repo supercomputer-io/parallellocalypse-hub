@@ -33,13 +33,7 @@
 			<div class='row'>
 				<div class='work-progress col-sm-8'>
 					<div class='uibox'>
-						<table class='table table-bordered' style='background-color: blue'>
-							<tbody>
-								<tr style='height: 50px;'>
-									<td ng-repeat='chunk in chunks track by $index' ng-style="chunkStyle[$index]" style='width: 15px; height: 20px;'></td>
-								</tr>
-							</tbody>
-						</table>
+						<div ng-repeat='(key, val) in chunks' ng-style="chunkStyle[key]" class='device-box'></div>
 					</div>
 				</div>
 				<div class='locations col-sm-4'>

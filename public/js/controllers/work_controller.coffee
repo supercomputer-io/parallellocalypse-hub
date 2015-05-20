@@ -33,25 +33,7 @@ define [
 
 				populateWork = (work) ->
 					$scope.work = work
-					if $scope.work.numChunks?
-						$scope.chunks = new Array($scope.work.numChunks)
-						$scope.chunkStyle = []
-						
-						_.each $scope.chunks, (chunk, ind) ->
-							if $scope.work.results[ind]?
-								$scope.chunks[ind] = 'green'
-								$scope.chunkStyle[ind] = {'background-color': 'green'}
-							else if $scope.work.assigned[ind]?
-								$scope.chunks[ind] = 'yellow'
-								$scope.chunkStyle[ind] = {'background-color': 'yellow'}
-							else
-								$scope.chunks[ind] = 'blue'
-								$scope.chunkStyle[ind] = {'background-color': 'blue'}
-
-					else
-						$scope.chunks = []
-						$scope.chunkStyle = []
-					console.log($scope.chunks)
+					
 					if $scope.work.status == 'Done'
 						$scope.result =
 							image: '/images/' + $scope.work.finalResult.imageUrl
@@ -65,14 +47,37 @@ define [
 					callback: (data) ->
 						console.log(data)
 						populateWork(data.workload)
-						
+				
+				PubNub.ngSubscribe
+					channel: 'results'
+					callback: (result) ->
+						$scope.chunks[result.device] = 'green'
+						$scope.chunkStyle[result.device] = {'background-color': 'green'}
 
 				$scope.getDevices = ->
 					PubNub.ngHereNow
 						channel: 'work'
 						presence: (data) ->
+							console.log(data)
 							$scope.numDevices = data[0].occupancy
 
+							$scope.devices = data[0].uuids
+
+							$scope.chunks = {}
+
+							$scope.chunkStyle = {}
+							
+							_.each $scope.devices, (dev) ->
+								if dev.state.status == 'Idle'
+									$scope.chunks[dev.uuid] = 'blue'
+									$scope.chunkStyle[dev.uuid] = {'background-color': 'blue'}
+								else if dev.state.status == 'Working'
+									$scope.chunks[dev.uuid] = 'yellow'
+									$scope.chunkStyle[dev.uuid] = {'background-color': 'yellow'}
+								else
+									$scope.chunks[dev.uuid] = 'white'
+									$scope.chunkStyle[dev.uuid] = {'background-color': 'white'}
+							console.log($scope.chunks)
 				devicesPoll = createPoll($scope.getDevices)
 				devicesPoll.start()
 
