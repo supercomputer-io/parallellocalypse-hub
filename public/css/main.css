@@ -16,6 +16,7 @@ body {
 
 .landing-jumbotron {
 	margin-top: -42px;
+	padding-top: 30px;
 }
 
 .drop-box {
@@ -184,4 +185,12 @@ body {
 	height: 15px;
 	display: inline-block;
 	border: 2px solid rgba( 151, 151, 151, 0.8);
+}
+
+.bg-white {
+	background: #FFFFFF;
+}
+
+.box-step {
+	padding: 15px;
 }
