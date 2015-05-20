@@ -13,6 +13,7 @@ if process.env.NODE_ENV == 'production'
 			key: process.env.S3_KEY
 			secret: process.env.S3_SECRET
 			bucket: process.env.S3_BUCKET
+			directory: process.env.S3_DIRECTORY
 		}
 	}
 else

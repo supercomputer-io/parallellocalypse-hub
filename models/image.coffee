@@ -14,7 +14,7 @@ ImageSchema = new mongoose.Schema({
 })
 
 ImageSchema.plugin(attachments, {
-	directory: 'images',
+	directory: config.s3.directory,
 	storage: {
 		providerName: 'aws2js'
 		options: {
