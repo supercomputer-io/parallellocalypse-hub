@@ -39,6 +39,8 @@ workController, loginController, createPoll, Auth) ->
 				return true
 
 			$rootScope.logout = Auth.logout
+			$rootScope.isActive = (view) ->
+				return $location.path().split('/')[1] == view
 		])
 		.config [ '$routeProvider', ($routeProvider) ->
 			$routeProvider

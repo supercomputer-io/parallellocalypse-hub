@@ -22,8 +22,9 @@
 								</span>
 							</a>
 							<ul class="nav navbar-nav" ng-cloak>
-								<li ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
-								<li><a href='#/devices'>Search device</a></li>
+								<li ng-class="{ active: isActive('dashboard') }" ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
+								<li ng-class="{ active: isActive('download') }"><a href='#/download'>Download OS</a></li>
+								<li ng-class="{ active: isActive('devices') }"><a href='#/devices'>Search device</a></li>
 							</ul>
 							<div class='pull-right' ng-if='authenticated' ng-cloak>
 								<ul class='nav navbar-nav'>

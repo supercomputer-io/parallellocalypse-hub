@@ -59,11 +59,6 @@ body {
 	font-size: 48;
 }
 
-.navbar {
-	height: 48px;
-	min-height: 48px;
-}
-
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
 	margin-left: 0px;
 }
