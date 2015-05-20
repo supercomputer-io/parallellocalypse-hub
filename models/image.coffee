@@ -1,6 +1,6 @@
 mongoose = require('mongoose')
 attachments = require('mongoose-attachments-aws2js')
-autoIncrement = require('mongoose-auto-incremetn')
+autoIncrement = require('mongoose-auto-increment')
 config = require('../config')
 path = require('path')
 
@@ -45,9 +45,9 @@ ImageSchema.plugin(attachments, {
 })
 
 autoIncrement.initialize(mongoose.connection)
-ImageSchema.plugin(autoIncrement, { model: 'image', field: 'uuid' })
-ImageSchema.virtual('original_img').get ->
-	return path.join('original', path.basename(this.image.original.path))
+ImageSchema.plugin(autoIncrement.plugin, { model: 'image', field: 'uuid' })
+ImageSchema.virtual('path').get ->
+	return this.image.original.path
 
 Image = mongoose.model('image', ImageSchema)
 
