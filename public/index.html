@@ -21,11 +21,11 @@
 									<img src='/img/parallella.svg' class='logo'>
 								</span>
 							</a>
-							<ul class="nav navbar-nav">
+							<ul class="nav navbar-nav" ng-cloak>
 								<li ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
 								<li><a href='#/devices'>Search device</a></li>
 							</ul>
-							<div class='pull-right' ng-if='authenticated'>
+							<div class='pull-right' ng-if='authenticated' ng-cloak>
 								<ul class='nav navbar-nav'>
 									<li><a  ng-click='logout()'>Logout</a></li>
 								</ul>
@@ -36,7 +36,15 @@
 			</nav>
 		</div>
 		
-		<div ng-view></div>
+		<div  ng-cloak ng-view>
+
+		</div>
+
+		<div class='container'>
+			<div class='row'>
+				<img class="col-xs-offset-6 ng-hide" src="/img/loading.gif">
+			</div>
+		</div>
 
 		<script type="text/javascript" src="/bower_components/requirejs/require.js"></script>
 		<script type="text/javascript" src="/js/main.js"></script>
