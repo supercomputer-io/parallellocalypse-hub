@@ -36,7 +36,8 @@
     "passport-local": "^1.0.0",
     "pubnub": "^3.7.10",
     "request": "^2.55.0",
-    "resin-sdk": "pcarranzav/resin-sdk.git#c0f7abdb315829ae8e74d78e72f95e6fe74422f3"
+    "resin-sdk": "pcarranzav/resin-sdk.git#c0f7abdb315829ae8e74d78e72f95e6fe74422f3",
+    "resin-settings-client": "^1.0.1"
   },
   "engines": {
     "node": "0.12.x",
