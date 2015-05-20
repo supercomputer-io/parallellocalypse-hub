@@ -1,5 +1,8 @@
-#resin token and appId
+#resin token and appId, and other secrets
 config.json
+
+# resin-settings-client local conf file (to switch between staging and production APIs)
+.resinconf
 
 # Logs
 logs
