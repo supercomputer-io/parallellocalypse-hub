@@ -17,6 +17,8 @@ body {
 .landing-jumbotron {
 	margin-top: -42px;
 	padding-top: 30px;
+	color: #FFFFFF;
+	background: #15354C;
 }
 
 .drop-box {
@@ -106,7 +108,7 @@ body {
 .mac-input::-webkit-input-placeholder {
 	opacity: 0.19;
 	font-family: OpenSans-Semibold,sans-serif;
-	font-size: 48px;
+	font-size: 44px;
 	color: #FFFFFF;
 }
 
@@ -188,4 +190,8 @@ body {
 
 .box-step {
 	padding: 15px;
+}
+
+.text-white {
+	color: #FFFFFF;
 }
