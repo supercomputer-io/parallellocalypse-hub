@@ -2,8 +2,8 @@ define [
 	'angular',
 	'lodash'
 ], (angular, _) ->
-	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth', '$sce',
-		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth, $sce) ->
+	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth', '$sce', 'config',
+		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth, $sce, config) ->
 
 			Auth.check (authenticated) ->
 				$scope.authenticated = authenticated
