@@ -1,7 +1,7 @@
 body {
 	padding-top: 90px;
 	background: #0A1F2E;
-	font-family: OpenSans-Semibold;
+	font-family: OpenSans-Semibold, sans-serif;
 	font-weight: 500;
 }
 
@@ -22,15 +22,15 @@ body {
 }
 
 .drop-box {
-  background: #F8F8F8;
-  border: 5px dashed #DDD;
-  width: 100%;
-  min-height: 120px;
-  text-align: center;
-  padding-top: 25px;
-  float: left;
-  margin-left: 10px;
+	border: 2px dashed #8393A0;
+	width: 100%;
+	min-height: 120px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
 
 .uibox {
 	background: #15354C;
@@ -39,11 +39,14 @@ body {
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 20px;
+	border: 1px solid #15354C;
+	border-radius: 5px;
 }
 
 .uibox > h4 {
-	opacity: 0.8;
-	margin-left: 20px;
+	margin-left: 12px;
+    color: #B7B7B7;
+    font-size: 16px;
 }
 
 .table-header-box {
@@ -57,9 +60,10 @@ body {
 }
 
 .number-in-box {
-	text-align: center;
-	font-size: 48;
+    margin-left: 12px;
+    padding: 0;
 }
+.number-in-box h1 {font-size: 50px; margin-top: 0}
 
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
 	margin-left: 0px;
@@ -181,7 +185,8 @@ body {
 	width: 15px;
 	height: 15px;
 	display: inline-block;
-	border: 2px solid rgba( 151, 151, 151, 0.8);
+	background-color: #EEEEEE;
+	margin-right: 2px;
 }
 
 .bg-white {
@@ -195,3 +200,50 @@ body {
 .text-white {
 	color: #FFFFFF;
 }
+.work-progress .uibox, .locations .uibox {
+	padding: 0;
+}
+.work-progress .title, .locations .title {
+	padding: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.work-progress .matrix-box {
+	min-height: 200px;
+	width: 100%;
+	background-color: #fff;
+}
+.work-progress .matrix-box .matrix {
+	min-height: 100px;
+	margin: 30px 10px;
+}
+.work-progress .matrix-box .separator {
+	color: #E6E6E6;
+    margin-bottom: 10px;
+}
+.work-progress .legends {
+	color: #5C5C5C;
+	float: right;
+    display: flex;
+    margin-bottom: 15px;
+}
+.work-progress .legends .legend {display: flex; align-items: center; justify-content: center; margin-left: 15px;}
+.work-progress .legends .legend .device-box {margin-right: 10px;}
+.matrix-box .assigned {background-color: #F7C30F}
+.matrix-box .solved {background-color: #B1D575}
+
+.image-progress .uibox {padding: 15px; text-align: center;}
+.image-progress .target-image {max-width: 110px; max-height: 110px; border: 1px solid #15354C; border-radius: 5px; float: left}
+.image-progress .target-image.result {float: right; opacity: 0.4}
+.progress-loader {vertical-align: top; display: inline-block; width: 50%}
+.progress-loader h4 {font-size: 16px; color: #B7B7B7; margin-top: 0}
+.progress-loader .loader {width: 80%}
+
+.progress-loader progress {width: 80%; margin-top: 20px; height: 12px; -webkit-appearance: none; -moz-appearance: none; background-color: #254B67; border: none}
+.progress-loader progress::-webkit-progress-value {background-color: #B1D575}
+.progress-loader progress::-webkit-progress-bar {background-color: #254B67}
+.progress-loader progress::-moz-progress-bar {background-color: #B1D575}
+
+.drop-box img {margin-right: 20px;}
+.drop-box .instructions {color: #D5D7DA}
+.drop-box .instructions h4 {text-transform: uppercase; margin: 0; padding: 0; display: inline-block; font-weight: 600}
