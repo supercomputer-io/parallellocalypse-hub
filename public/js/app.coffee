@@ -2,12 +2,12 @@ define [
 	'angular',
 	'lodash',
 	'restangular',
-	'cs!js/controllers/devices_controller',
-	'cs!js/controllers/download_controller',
-	'cs!js/controllers/work_controller',
-	'cs!js/controllers/login_controller',
-	'cs!js/helpers/create_poll',
-	'cs!js/helpers/auth',
+	'cs!./controllers/devices_controller',
+	'cs!./controllers/download_controller',
+	'cs!./controllers/work_controller',
+	'cs!./controllers/login_controller',
+	'cs!./helpers/create_poll',
+	'cs!./helpers/auth',
 	'angular-route',
 	'angular-timeago',
 	'ng-file-upload',
@@ -15,6 +15,11 @@ define [
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
+
+	try
+		angular.module('templateCache')
+	catch
+		angular.module('templateCache', [])
 
 	angular
 		.module('app', [
@@ -25,6 +30,7 @@ workController, loginController, createPoll, Auth) ->
 			'yaru22.angular-timeago',
 			'ngFileUpload',
 			'pubnub.angular.service'
+			'templateCache'
 		])
 
 		.value 'config',
@@ -49,24 +55,24 @@ workController, loginController, createPoll, Auth) ->
 			$routeProvider
 				.when '/login',
 					controller: loginController
-					templateUrl: 'js/views/login.tpl'
+					templateUrl: '/js/views/login.tpl'
 				.when '/dashboard',
 					controller: workController
-					templateUrl: 'js/views/work.tpl'
+					templateUrl: '/js/views/work.tpl'
 				.when '/download',
 					controller: downloadController
-					templateUrl: 'js/views/download.tpl'
+					templateUrl: '/js/views/download.tpl'
 				.when '/',
 					controller: downloadController
-					templateUrl: 'js/views/landing.tpl'
+					templateUrl: '/js/views/landing.tpl'
 				.when '/devices',
 					controller: devicesController
-					templateUrl: 'js/views/devices.tpl'
+					templateUrl: '/js/views/devices.tpl'
 				.when '/devices/:mac',
 					controller: devicesController
-					templateUrl: 'js/views/devices.tpl'
+					templateUrl: '/js/views/devices.tpl'
 				.otherwise
-					templateUrl: 'js/views/404.tpl'
+					templateUrl: '/js/views/404.tpl'
 
 		]
 		.config [ 'RestangularProvider', (RestangularProvider) ->

@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
 		clean:
 			build: [ 'build' ]
-			templateCache: [ 'build/js/templateCache.js' ]
+			templateCache: [ 'build/templateCache.js' ]
 
 		copy:
 			src:
@@ -31,7 +31,6 @@ module.exports = (grunt) ->
 					dest: 'build/'
 				]
 
-
 		less:
 			main:
 				options:
@@ -49,13 +48,61 @@ module.exports = (grunt) ->
 					dest: 'public/'
 				]
 
+		requirejs:
+			main:
+				options:
+					baseUrl: 'public/js'
+					mainConfigFile: 'public/js/main.js'
+					out: 'build/main.js'
+					name: 'main'
+					optimize: 'none'
+					preserveLicenseComments: false
+					stubModules: [
+						'text'
+						'css'
+						'cs'
+						'json'
+					]
+					include: ['almond']
+					excludeShallow: [
+						'cache',
+						'coffee-script'
+						'uglify-js'
+					]
+
+		ngtemplates:
+			templateCache:
+				cwd: 'public'
+				src: 'js/views/*.tpl'
+				dest: 'build/templateCache.js'
+				options:
+					htmlmin:
+						collapseBooleanAttributes: false
+						collapseWhitespace: true
+						removeAttributeQuotes: false
+						removeComments: true
+						removeEmptyAttributes: false
+						removeRedundantAttributes: true
+						removeScriptTypeAttributes: true
+						removeStyleLinkTypeAttributes: true
+					prefix: '/'
+					standalone: true
+
+		concat:
+			templateCache:
+				src: [ 'build/main.js', 'build/templateCache.js' ]
+				dest: 'build/main.js'
+
 	require('load-grunt-tasks')(grunt)
 
 	grunt.registerTask 'build', [
 		'clean:build'
 		'copy'
 		'less'
+		'requirejs'
+		'ngtemplates'
+		'concat:templateCache'
+		'clean:templateCache'
 		'swig_render'
 		'processhtml'
-
 	]

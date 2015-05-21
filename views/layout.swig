@@ -22,8 +22,12 @@
 	<body>
 		{% block content %}{% endblock %}
 
+		<!-- build:remove -->
 		<script type="text/javascript" src="/bower_components/requirejs/require.js"></script>
 		<script type="text/javascript" src="/js/main.js"></script>
+		<!-- /build -->
+
+		<!-- build:include ../views/build/js.html --><!-- /build -->
 
 	</body>
 </html>

@@ -30,6 +30,7 @@
     "pubnub": "~3.7.10",
     "pubnub-angular": "~1.1.0",
     "world-flags-sprite": "lafeber/world-flags-sprite",
-    "less": "~2.5.1"
+    "less": "~2.5.1",
+    "almond": "~0.3.1"
   }
 }
