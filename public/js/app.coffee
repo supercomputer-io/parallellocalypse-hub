@@ -27,6 +27,9 @@ workController, loginController, createPoll, Auth) ->
 			'pubnub.angular.service'
 		])
 
+		.value 'config',
+			s3url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
+
 		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location',
 		($rootScope, Restangular, PubNub, Auth, $location) ->
 			PubNub.init

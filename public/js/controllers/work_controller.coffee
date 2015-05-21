@@ -2,8 +2,8 @@ define [
 	'angular',
 	'lodash'
 ], (angular, _) ->
-	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth'
-		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth) ->
+	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth', '$sce',
+		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth, $sce) ->
 
 			Auth.check (authenticated) ->
 				$scope.authenticated = authenticated
@@ -35,6 +35,7 @@ define [
 				populateWork = (work) ->
 					$scope.work = work
 
+					$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)
 					if $scope.work.status == 'Done'
 						$scope.result =
 							image: '/images/' + $scope.work.finalResult.imageUrl

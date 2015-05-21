@@ -14,13 +14,13 @@
 							</div>
 						</div>
 						<div ng-if="work.status">
-							<img ng-src='{{ "/images/" + work.targetImage.original_img }}' class="target-image">
+							<img ng-src='{{ targetImageUrl }}' class="target-image">
 							<div class="progress-loader">
 								<h4>Searching Database...</h4>
 								<img src="img/loader.gif" class="loader">
 								<progress max="100" value="44"></progress>
 							</div>
-							<img ng-if="!result.name" ng-src='{{ "/images/" + work.targetImage.original_img }}' class="target-image result">
+							<img ng-if="!result.name" ng-src='{{ targetImageUrl }}' class="target-image result">
 							<div class='col-sm-8'>
 								<h2 ng-if='result.name'>{{result.name}}</h2>
 							</div>

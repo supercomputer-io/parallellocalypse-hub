@@ -1,7 +1,7 @@
 define [
 ], ->
-	return ['$scope', '$sce',
-		($scope, $sce) ->
+	return ['$scope', '$sce', 'config',
+		($scope, $sce, config) ->
 			$scope.downloadUrl = '/api/download'
 
 
@@ -11,7 +11,7 @@ define [
 
 				console.log(parallella.networkConfig.type)
 				if parallella.networkConfig.type == 'ethernet'
-					downloadUrl = 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
+					downloadUrl = config.s3url
 					downloadUrl += 'os/resin-parallellocalypse-0.1.0-0.0.14-'
 					downloadUrl += parallella.processorType
 					downloadUrl += '-' + parallella.coprocessorCore
