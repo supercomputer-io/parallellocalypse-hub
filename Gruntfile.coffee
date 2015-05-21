@@ -93,16 +93,28 @@ module.exports = (grunt) ->
 				src: [ 'build/main.js', 'build/templateCache.js' ]
 				dest: 'build/main.js'
 
+		uglify:
+			options:
+				mangle: true
+				compress: true
+			src:
+				files:
+					'build/main.js': ['build/main.js']
+
 	require('load-grunt-tasks')(grunt)
 
 	grunt.registerTask 'build', [
 		'clean:build'
 		'copy'
+
 		'less'
+
 		'requirejs'
 		'ngtemplates'
 		'concat:templateCache'
 		'clean:templateCache'
+		'uglify'
+
 		'swig_render'
 		'processhtml'
 	]
