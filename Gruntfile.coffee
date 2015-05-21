@@ -1,6 +1,15 @@
 module.exports = (grunt) ->
 	grunt.initConfig
 
+		copy:
+			src:
+				files: [
+					expand: true
+					cwd: 'public'
+					src: '**/*.{png,jpg,jpeg,gif,swf,svg,eot,ttf,otf,woff,woff2}'
+					dest: 'build'
+				]
+
 		imagemin:
 			src:
 				files: [
@@ -12,4 +21,6 @@ module.exports = (grunt) ->
 
 	require('load-grunt-tasks')(grunt)
 
-	grunt.registerTask 'build', []
+	grunt.registerTask 'build', [
+		'copy'
+	]
