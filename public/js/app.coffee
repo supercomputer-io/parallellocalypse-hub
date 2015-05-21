@@ -49,27 +49,26 @@ workController, loginController, createPoll, Auth) ->
 			$routeProvider
 				.when '/login',
 					controller: loginController
-					templateUrl: 'views/login.html'
+					templateUrl: 'js/views/login.tpl'
 				.when '/dashboard',
 					controller: workController
-					templateUrl: 'views/work.html'
+					templateUrl: 'js/views/work.tpl'
 				.when '/download',
 					controller: downloadController
-					templateUrl: 'views/download.html'
+					templateUrl: 'js/views/download.tpl'
 				.when '/',
 					controller: downloadController
-					templateUrl: 'views/landing.html'
+					templateUrl: 'js/views/landing.tpl'
 				.when '/devices',
 					controller: devicesController
-					templateUrl: 'views/devices.html'
+					templateUrl: 'js/views/devices.tpl'
 				.when '/devices/:mac',
 					controller: devicesController
-					templateUrl: 'views/devices.html'
+					templateUrl: 'js/views/devices.tpl'
 				.otherwise
-					templateUrl: 'views/404.html'
+					templateUrl: 'js/views/404.tpl'
 
 		]
 		.config [ 'RestangularProvider', (RestangularProvider) ->
 			RestangularProvider.setBaseUrl('api')
 		]
-
