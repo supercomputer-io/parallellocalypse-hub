@@ -33,12 +33,6 @@ ImageSchema.plugin(attachments, {
 		image: {
 			styles: {
 				original: {},
-				resized: {
-					thumbnail: '250x250',
-					gravity: 'center',
-					extent: '250x250',
-					'$format': 'jpg'
-				}
 			}
 		}
 	}
