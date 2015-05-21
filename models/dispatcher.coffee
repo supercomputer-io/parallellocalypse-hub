@@ -232,7 +232,7 @@ Dispatcher =
 					console.log(JSON.stringify(images).length)
 					pubnub.publish({
 						channel: 'images'
-						message: images
+						message: { images, page, nPages }
 						error: (err) -> console.log(err)
 					})
 
