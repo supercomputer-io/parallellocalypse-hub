@@ -1,0 +1,46 @@
+{% extends '../layout.swig' %}
+
+{% block content %}
+	<div class="header">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class='row'>
+					<div class='col-xs-12'>
+						<a class="navbar-brand" href="#/">
+							<span>
+								<img src='/img/logo.svg' class='logo'>
+							</span>
+							<span>
+								<img src='/img/parallella.svg' class='logo'>
+							</span>
+							<span>
+								supercomputer.io
+							</span>
+						</a>
+						<ul class="nav navbar-nav" ng-cloak>
+							<li ng-class="{ active: isActive('dashboard') }" ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
+							<li ng-class="{ active: isActive('download') }"><a href='#/download'>Download OS</a></li>
+							<li ng-class="{ active: isActive('devices') }"><a href='#/devices'>Search device</a></li>
+							<li ng-class="{ active: isActive('dashboard') }" ng-if='!authenticated'><a href='#/dashboard'>Dashboard</a></li>
+						</ul>
+						<div class='pull-right' ng-if='authenticated' ng-cloak>
+							<ul class='nav navbar-nav'>
+								<li><a  ng-click='logout()'>Logout</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<div  ng-cloak ng-view>
+
+	</div>
+
+	<div class='container'>
+		<div class='row'>
+			<img class="col-xs-offset-6 ng-hide" src="/img/loading.gif">
+		</div>
+	</div>
+{% endblock %}
