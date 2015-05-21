@@ -29,6 +29,7 @@
     "ng-file-upload": "~4.2.1",
     "pubnub": "~3.7.10",
     "pubnub-angular": "~1.1.0",
-    "world-flags-sprite": "lafeber/world-flags-sprite"
+    "world-flags-sprite": "lafeber/world-flags-sprite",
+    "less": "~2.5.1"
   }
 }

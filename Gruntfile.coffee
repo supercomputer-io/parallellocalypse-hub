@@ -3,13 +3,6 @@ module.exports = (grunt) ->
 
 		clean:
 			build: [ 'build' ]
-			css:
-				files: [
-					expand: true
-					cwd: 'build/css'
-					src: '*'
-					filter: (src) -> src.indexOf('main.css') is -1
-				]
 			templateCache: [ 'build/js/templateCache.js' ]
 
 		copy:
@@ -29,6 +22,24 @@ module.exports = (grunt) ->
 				src: [ '*.swig' ]
 				dest: 'build'
 
+		processhtml:
+			src:
+				files: [
+					expand: true
+					cwd: 'build/'
+					src: [ '*.html' ]
+					dest: 'build/'
+				]
+
+
+		less:
+			main:
+				options:
+					compress: true
+					relativeUrls: true
+				files:
+					'build/main.css': 'public/css/main.less'
+
 		imagemin:
 			src:
 				files: [
@@ -43,5 +54,8 @@ module.exports = (grunt) ->
 	grunt.registerTask 'build', [
 		'clean:build'
 		'copy'
+		'less'
 		'swig_render'
+		'processhtml'
+
 	]

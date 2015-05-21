@@ -37,4 +37,4 @@ public/images
 .bower-cache
 .bower-registry
 .bower-tmp
-build
+/build
