@@ -1,6 +1,8 @@
+fs = require('fs')
+path = require('path')
+
 mongoose = require('mongoose')
 express = require('express')
-server = require('http').createServer(app)
 bodyParser = require('body-parser')
 resin = require('resin-sdk')
 config = require('./config')
@@ -72,7 +74,24 @@ app.use (req, res, next) ->
 	console.log('%s %s', req.method, req.url)
 	next()
 
-app.use(express.static(__dirname + '/public'))
+if process.env.NODE_ENV == 'production'
+	app.use(express.static(__dirname + '/build'))
+else
+	swig = require('swig')
+	viewsDir = __dirname + '/views'
+	app.engine('swig', swig.renderFile)
+	app.set('view engine', 'swig')
+	app.set('views', viewsDir)
+	pages = fs.readdirSync("#{viewsDir}/pages").map (fileName) ->
+		path.basename(fileName, '.swig')
+	pages.forEach (page) ->
+		app.get "/#{page}.html", (req, res) ->
+			res.render("pages/#{page}")
+	app.get '/', (req, res) ->
+		res.render('pages/index')
+
+	app.use(express.static(__dirname + '/public'))
+
 
 app.use(session({ secret: 'themostamazingsupercomputer' }))
 app.use(passport.initialize())
