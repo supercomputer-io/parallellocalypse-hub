@@ -11,7 +11,8 @@ define [
 	'angular-route',
 	'angular-timeago',
 	'ng-file-upload',
-	'pubnub-angular'
+	'pubnub-angular',
+	'bootstrap'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
