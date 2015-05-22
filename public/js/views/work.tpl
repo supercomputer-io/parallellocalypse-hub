@@ -7,7 +7,7 @@
 						<div ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
 							<!--<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>-->
 							<div ng-show="!work.status" class='drop-box'>
-								<img src="img/drag-drop.png" style="">
+								<img src="/img/drag-drop.png" style="">
 								<div class="instructions">
 									<div><h4>drag & drop</h4><br>your image here or <span style="text-decoration: underline">browse</span></div>
 								</div>
@@ -17,7 +17,7 @@
 							<img ng-src='{{ targetImageUrl }}' class="target-image">
 							<div class="progress-loader">
 								<h4>Searching Database...</h4>
-								<img src="img/loader.gif" class="loader">
+								<img src="/img/loader.gif" class="loader">
 								<progress max="100" value="44"></progress>
 							</div>
 							<img ng-if="!result.name" ng-src='{{ targetImageUrl }}' class="target-image result">

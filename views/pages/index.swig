@@ -25,7 +25,7 @@
 						</ul>
 						<div class='pull-right' ng-if='authenticated' ng-cloak>
 							<ul class='nav navbar-nav'>
-								<li><a  ng-click='logout()'>Logout</a></li>
+								<li><a ng-click='logout()'>Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -34,7 +34,7 @@
 		</nav>
 	</div>
 
-	<div  ng-cloak ng-view>
+	<div ng-cloak ng-view>
 
 	</div>
 
