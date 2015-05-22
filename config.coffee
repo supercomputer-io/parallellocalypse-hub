@@ -9,6 +9,9 @@ if process.env.NODE_ENV == 'production'
 			email: process.env.ADMIN_EMAIL
 			password: process.env.ADMIN_PASSWORD
 		}
+		device: {
+			secret: process.env.DEVICE_SECRET
+		}
 		s3: {
 			key: process.env.S3_KEY
 			secret: process.env.S3_SECRET

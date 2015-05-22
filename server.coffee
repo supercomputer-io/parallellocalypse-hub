@@ -56,7 +56,7 @@ passport.use 'device', new LocalStrategy({
 	passReqToCallback: true
 }, (req, macAddress, secret, done) ->
 
-	if bcrypt.compareSync(macAddress + config.secret, secret)
+	if !bcrypt.compareSync(macAddress + config.device.secret, secret)
 		return done(null, false)
 
 	user = {
