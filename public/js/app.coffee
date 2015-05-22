@@ -12,7 +12,9 @@ define [
 	'angular-timeago',
 	'ng-file-upload',
 	'pubnub-angular',
-	'bootstrap'
+	'bootstrap',
+	'EventEmitter',
+	'GA'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
