@@ -85,7 +85,7 @@ define [
 
 				$scope.getWork = ->
 					Restangular.one('work/current').get().then (data) ->
-						populateWork(data)
+						populateWork(data) if data
 
 				if authenticated
 					$scope.uploadFile = ->
