@@ -1,5 +1,5 @@
 fs = require('fs')
-if process.env.NODE_ENV == 'production'
+if !fs.existsSync('config.json')
 	module.exports = {
 		token: process.env.RESIN_TOKEN
 		appId: process.env.RESIN_APP_ID
