@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>parallellocalypse</title>
+		<title>supercomputer.io</title>
 
 		<link rel="shortcut icon" href="/img/favicon.png">
 
