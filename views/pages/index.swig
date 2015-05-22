@@ -26,6 +26,7 @@
 				<ul class="nav navbar-nav" ng-cloak>
 					<li ng-class="{ active: isActive('dashboard') }" ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
 					<li ng-class="{ active: isActive('download') }"><a href='#/download'>Download OS</a></li>
+					<li ng-class="{ active: isActive('faq') }"><a href='#/faq'>FAQ</a></li>
 					<li ng-class="{ active: isActive('devices') }"><a href='#/devices'>Search device</a></li>
 					<li ng-class="{ active: isActive('dashboard') }" ng-if='!authenticated'><a href='#/dashboard'>Dashboard</a></li>
 				</ul>
@@ -45,5 +46,7 @@
 		<div class='row'>
 			<img class="col-xs-offset-6 ng-hide" src="/img/loading.gif">
 		</div>
+	</div>
+	<div class='footer'>
 	</div>
 {% endblock %}

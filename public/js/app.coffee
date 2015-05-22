@@ -67,6 +67,9 @@ workController, loginController, createPoll, Auth, evEm, GA) ->
 				.when '/dashboard',
 					controller: workController
 					templateUrl: '/js/views/work.tpl'
+				.when '/faq',
+					controller: downloadController
+					templateUrl: '/js/views/faq.tpl'
 				.when '/download',
 					controller: downloadController
 					templateUrl: '/js/views/download.tpl'

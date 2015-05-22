@@ -1,9 +1,13 @@
 define [
 ], ->
-	return ['$scope', '$sce', 'config',
-		($scope, $sce, config) ->
+	return ['$scope', '$sce', 'config', '$anchorScroll', '$location',
+		($scope, $sce, config, $anchorScroll, $location) ->
 			$scope.downloadUrl = '/api/download'
 
+			$scope.scrollTo = (id) ->
+				$location.hash(id)
+				$anchorScroll.yOffset = 50
+				$anchorScroll()
 
 			$scope.$watch 'parallella', (parallella) ->
 				if parallella.processorType == 'Z7010'
