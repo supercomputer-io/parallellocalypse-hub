@@ -18,7 +18,7 @@
 		</div>
 		<div class='row'>
 			<div class='col-xs-12 text-center'>
-				<h2><b>How it works</b></h2>
+				<h2 class='landing-h'>How it works</h2>
 				<h4>The supercomputer.io workflow:</h4>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		</div>
 		<div class='row' id='participate'>
 			<div class='col-xs-12 text-center'>
-				<h2><b>How you can contribute</b></h2>
+				<h2 class='landing-h'>How to participate</h2>
 			</div>
 		</div>
 		<div class='row text-center'>
