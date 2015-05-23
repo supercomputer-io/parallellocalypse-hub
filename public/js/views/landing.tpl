@@ -4,7 +4,7 @@
 			<div class='col-sm-6'>
 				<h1>The most efficient Supercomputer on the Planet</h1>
 				<div class='row'>
-					<div class='col-sm-3 col-sm-offset-3'>
+					<div class='col-sm-6'>
 						<div class='uibox'>
 							<h4>Online CPU Cores</h4>
 							<div class='number-in-box'>
