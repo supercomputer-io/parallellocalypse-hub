@@ -9,21 +9,6 @@
 
 		<div class='row'>
 			<div class='col-xs-8 col-xs-offset-2'>
-				<h3>How do you ask a question?</h3>
-				<p>Like this.</p>
-			</div>
-			<hr class='col-xs-10 col-xs-offset-1'>
-		</div>
-		<div class='row'>
-			<div class='col-xs-8 col-xs-offset-2'>
-				<h3>Where can I get answers?</h3>
-				<p>You're in the right place.</p>
-			</div>
-			<hr class='col-xs-10 col-xs-offset-1'>
-		</div>
-
-		<div class='row'>
-			<div class='col-xs-8 col-xs-offset-2'>
 				<h3>What is a supercomputer?</h3>
 				<p>Simply put it's a computer with exceptional compute capacity. With the exponential rate of Moore's Law over the last 50 years, the “exceptional” is an ever moving target. If you are interested in the historical progress of supercomputers, check out the TOP500 list. It includes all of the biggest machines from the present and past.</p>
 			</div>
@@ -113,7 +98,7 @@
 		<div class='row'>
 			<div class='col-xs-8 col-xs-offset-2'>
 				<h3>Does it run application 'X'?</h3>
-				<p> The Parallella and Raspberry Pi both run standard Linux, so there is a good chance that it will if you upload the application to resin.io. However, note that most of today's legacy software was not written to take advantage of parallelism so you will likely have to do a fair amount of work to make the application run fast.</p> 
+				<p> The Parallella runs standard Linux, so there is a good chance that it will if you upload the application to resin.io. However, note that most of today's legacy software was not written to take advantage of parallelism so you will likely have to do a fair amount of work to make the application run fast.</p> 
 			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
@@ -130,7 +115,7 @@
 		<div class='row'>
 			<div class='col-xs-8 col-xs-offset-2'>
 				<h3>How much does it cost to participate?</h3>
-				<p> With the Parallella and Raspberry Pi both consuming less than 5 Watts at peak capacity, the cost of contributing compute capacity to the grid 24/7 365 days a year should be less than $5.</p> 
+				<p> With the Parallella consuming less than 5 Watts at peak capacity, the cost of contributing compute capacity to the grid 24/7 365 days a year should be less than $5.</p> 
 			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
