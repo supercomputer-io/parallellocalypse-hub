@@ -18,6 +18,24 @@
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
 		<div class='row'>
+			<div class='col-sm-3 col-sm-offset-3'>
+				<div class='uibox'>
+					<h4>Total devices</h4>
+					<div class='number-in-box'>
+						<h1>{{totalDevices || 0 | number}}</h1>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-3'>
+				<div class='uibox'>
+					<h4>Devices Online right now</h4>
+					<div class='number-in-box'>
+						<h1>{{numDevices || 0 | number}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
 			<div class='col-xs-12 text-center'>
 				<h2 class='landing-h'>How it works</h2>
 				<h4>The supercomputer.io workflow:</h4>

@@ -47,7 +47,6 @@ define [
 				PubNub.ngSubscribe
 					channel: 'status'
 					callback: (data) ->
-						console.log(data)
 						populateWork(data.workload)
 
 				PubNub.ngSubscribe
@@ -60,7 +59,6 @@ define [
 					PubNub.ngHereNow
 						channel: 'work'
 						presence: (data) ->
-							console.log(data)
 							$scope.numDevices = data[0].occupancy
 
 							$scope.devices = data[0].uuids
@@ -79,7 +77,6 @@ define [
 								else
 									$scope.chunks[dev.uuid] = 'white'
 									$scope.chunkStyle[dev.uuid] = {'background-color': 'white'}
-							console.log($scope.chunks)
 				devicesPoll = createPoll($scope.getDevices)
 				devicesPoll.start()
 

@@ -1,9 +1,9 @@
 define [
 	'angular-bootstrap'
 ], ->
-	return ['$scope', '$sce', 'config', '$anchorScroll', '$location', '$modal', '$rootScope',
-		($scope, $sce, config, $anchorScroll, $location, $modal, $rootScope) ->
-			$scope.downloadUrl = '/api/download'
+	return ['$scope', '$sce', 'config', '$anchorScroll', '$location',
+		'$modal', '$rootScope', 'createPoll', 'PubNub', 'Restangular'
+		($scope, $sce, config, $anchorScroll, $location, $modal, $rootScope, createPoll, PubNub, Restangular) ->
 
 			$scope.scrollTo = (id) ->
 				$location.hash(id)
@@ -37,6 +37,7 @@ define [
 					controller: ['$scope', '$modalInstance', ($scope, $modalInstance) ->
 						$scope.close = ->
 							$modalInstance.dismiss()
+							$location.path('/')
 					]
 				}
 
@@ -44,4 +45,16 @@ define [
 
 			if $location.path() == '/install'
 				$scope.openInstructions()
+
+			$scope.getDevices = ->
+					PubNub.ngHereNow
+						channel: 'work'
+						presence: (data) ->
+							$scope.numDevices = data[0].occupancy
+					Restangular.one('devices/count').get().then (data) ->
+						if data.count
+							$scope.totalDevices = data.count
+
+			devicesPoll = createPoll($scope.getDevices)
+			devicesPoll.start()
 	]
