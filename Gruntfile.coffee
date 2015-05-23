@@ -8,10 +8,27 @@ module.exports = (grunt) ->
 		copy:
 			src:
 				files: [
-					expand: true
-					cwd: 'public'
-					src: '**/*.{png,jpg,jpeg,gif,swf,svg,eot,ttf,otf,woff,woff2}'
-					dest: 'build'
+					{
+						expand: true
+						cwd: 'public'
+						src: '**/*.{png,jpg,jpeg,gif,swf,svg,eot,ttf,otf,woff,woff2}'
+						dest: 'build'
+					},
+					{
+						expand: true
+						flatten: true
+						cwd: 'public'
+						src: 'bower_components/bootstrap/dist/fonts/*.{png,jpg,jpeg,gif,swf,svg,eot,ttf,otf,woff,woff2}'
+						dest: 'build/fonts'
+					},
+					{
+						expand: true
+						flatten: true
+						cwd: 'public'
+						src: 'bower_components/world-flags-sprite/images/*.{png,jpg,jpeg,gif,swf,svg,eot,ttf,otf,woff,woff2}'
+						dest: 'build/images'
+					}
+
 				]
 
 		swig_render:
