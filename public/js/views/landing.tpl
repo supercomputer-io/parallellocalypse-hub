@@ -2,9 +2,10 @@
 	<div class="jumbotron landing-jumbotron">
 		<div class='container'>
 			<div class='col-sm-6'>
-				<h2>The most efficient Supercomputer on the Planet</h2>
-				<p>Help us democratize access to supercomputing for the scientists that need it. All you need is a Parallella computer to get started.</p>
-				<p><a class="btn btn-success btn-lg" ng-click="scrollTo('participate')" role="button">Get started</a></p>
+				<h1>The most efficient Supercomputer on the Planet</h1>
+				<h2>Help us democratize access to supercomputing for the scientists that need it. All you need is a Parallella computer to get started.</h2>
+				<p>
+					<div class='col-sm-4'><a class="btn btn-block btn-landing-green" ng-click="scrollTo('participate')" role="button">Get started</a></div></p>
 			</div>
 		</div>
 	</div>
@@ -18,6 +19,30 @@
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
 		<div class='row'>
+			<div class='col-xs-12 text-center project-description'>
+				<h1 class='landing-h'>How it works</h1>
+				<h3>The supercomputer.io workflow:</h3>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-xs-7 col-xs-offset-3'>
+				<ol class='workflow-list'>
+					<li><b>Developers</b> push applications to the supercomputer.io repository.</li>
+					<li><b>Workers</b> contribute their unused Parallella boards to the cause.</li>
+					<li><b>Scientists</b> put in work requests to use supercomputer.io applications.</li>
+				</ol>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-xs-4 col-xs-offset-4'>
+				<!-- Cool diagram goes here -->
+			</div>
+			<hr class='col-xs-10 col-xs-offset-1'>
+		</div>
+		<div class='row'>
+			<div class='col-xs-12 text-center project-description'>
+				<h1 class='landing-h'>Our numbers are growing. Join us!</h1>
+			</div>
 			<div class='col-sm-3 col-sm-offset-3'>
 				<div class='uibox'>
 					<h4>Total devices</h4>
@@ -36,29 +61,11 @@
 			</div>
 		</div>
 		<div class='row'>
-			<div class='col-xs-12 text-center'>
-				<h2 class='landing-h'>How it works</h2>
-				<h4>The supercomputer.io workflow:</h4>
-			</div>
-		</div>
-		<div class='row'>
-			<div class='col-xs-6 col-xs-offset-3'>
-				<ol class='workflow-list'>
-					<li><b>Developers</b> push applications to the supercomputer.io repository.</li>
-					<li><b>Workers</b> contribute their unused Parallella boards to the cause.</li>
-					<li><b>Scientists</b> put in work requests to use supercomputer.io applications.</li>
-				</ol>
-			</div>
-		</div>
-		<div class='row'>
-			<div class='col-xs-4 col-xs-offset-4'>
-				Cool diagram goes here
-			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
 		<div class='row' id='participate'>
-			<div class='col-xs-12 text-center'>
-				<h2 class='landing-h'>How to participate</h2>
+			<div class='col-xs-12 text-center project-description'>
+				<h1 class='landing-h'>How to participate</h1>
 			</div>
 		</div>
 		<div class='row text-center'>
@@ -68,9 +75,11 @@
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
-						<button class='btn btn-primary' ng-click='openDownloadModal()'>Download</button>
+						<button class='btn btn-landing-green btn-block' id='open-download-btn' ng-click='openDownloadModal()'>Download</button>
 					</div>
-					Download the OS image
+					<div class='step-description'>
+						Download the OS image
+					</div>
 				</div>
 			</div>
 			<div class='col-sm-4'>
@@ -78,12 +87,19 @@
 					<p class='step-title'>Step 2</p>
 				</div>
 				<div class='row box-step'>
-					<a href="#/install">
-						<div class='well'>
+					<div class='well'>
+						<div class='row'>
 							<img src='/img/sdcard.png'>
 						</div>
-					</a>
-					Write OS to SD card
+						<div class='row'>
+							<div class='col-sm-8 col-sm-offset-2'>
+								<a class='btn btn-primary btn-block' href="#/install">Instructions</a>
+							</div>
+						</div>
+					</div>
+					<div class='step-description'>
+						Write OS to SD card
+					</div>
 				</div>
 			</div>
 			<div class='col-sm-4'>
@@ -92,9 +108,11 @@
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
-						<p>Power up</p>
+						<img src='/img/plug-parallella.jpg'>
 					</div>
-					Power up your board
+					<div class='step-description'>
+						Power up your board
+					</div>
 				</div>
 
 			</div>

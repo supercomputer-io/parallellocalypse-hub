@@ -46,6 +46,6 @@
 			<img class="col-xs-offset-6 ng-hide" src="/img/loading.gif">
 		</div>
 	</div>
-	<div class='footer'>
-	</div>
+	<footer class='footer'>
+	</footer>
 {% endblock %}
