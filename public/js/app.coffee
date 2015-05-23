@@ -26,8 +26,6 @@ workController, loginController, createPoll, Auth, evEm, GA) ->
 		angular.module('templateCache', [])
 
 	GA.ready (ga) ->
-		console.log("GA ready")
-		console.log(ga)
 		ga('send', 'pageview')
 
 	angular

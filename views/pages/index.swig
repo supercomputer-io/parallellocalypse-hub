@@ -25,7 +25,7 @@
 			<div class="collapse navbar-collapse" id="mainNavbar">
 				<ul class="nav navbar-nav" ng-cloak>
 					<li ng-class="{ active: isActive('dashboard') }" ng-if='authenticated'><a href='#/dashboard'>Dashboard</a></li>
-					<li ng-class="{ active: isActive('download') }"><a href='#/download'>Download OS</a></li>
+					<li ng-class="{ active: isActive('download') }"><a ng-click='openDownloadModal()'>Download OS</a></li>
 					<li ng-class="{ active: isActive('faq') }"><a href='#/faq'>FAQ</a></li>
 					<li ng-class="{ active: isActive('devices') }"><a href='#/devices'>Search device</a></li>
 				</ul>
