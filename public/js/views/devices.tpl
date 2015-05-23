@@ -15,7 +15,7 @@
 			<div class='row' ng-if="device == null && macAddress != ''">
 				<div class='col-sm-6 col-sm-offset-2 text-white'>
 					<h3>No device yet...</h3>
-					<p>Please check you entered the correct MAC Address. Otherwise, the device will appear here after it goes online.</p>
+					<p>Please check you entered the correct MAC Address. Otherwise, the device will appear here after it goes online. It might take a while for the device to download the latest application code.</p>
 				</div>
 			</div>
 			<div class="row" ng-if="device != null">
