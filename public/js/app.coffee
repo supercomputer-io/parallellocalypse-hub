@@ -13,7 +13,8 @@ define [
 	'ng-file-upload',
 	'pubnub-angular',
 	'bootstrap',
-	'angular-bootstrap'
+	'angular-bootstrap',
+	'angular-google-analytics'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
@@ -33,14 +34,15 @@ workController, loginController, createPoll, Auth) ->
 			'ngFileUpload',
 			'pubnub.angular.service',
 			'templateCache',
-			'ui.bootstrap'
+			'ui.bootstrap',
+			'angular-google-analytics'
 		])
 
 		.value 'config',
 			s3url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
 
-		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location',
-		($rootScope, Restangular, PubNub, Auth, $location) ->
+		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics',
+		($rootScope, Restangular, PubNub, Auth, $location, Analytics) ->
 			PubNub.init
 				subscribe_key: 'sub-c-1faf9860-f5c0-11e4-b21e-02ee2ddab7fe'
 
@@ -86,4 +88,9 @@ workController, loginController, createPoll, Auth) ->
 		]
 		.config [ 'RestangularProvider', (RestangularProvider) ->
 			RestangularProvider.setBaseUrl('api')
+		]
+		.config [ 'AnalyticsProvider', (AnalyticsProvider) ->
+			AnalyticsProvider.setAccount('UA-63317104-1');
+			AnalyticsProvider.trackPages(true);
+			AnalyticsProvider.useAnalytics(true);
 		]

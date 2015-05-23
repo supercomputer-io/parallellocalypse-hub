@@ -24,7 +24,8 @@ require.config({
 		'ng-file-upload': '../bower_components//ng-file-upload/ng-file-upload.min',
 		pubnub: '../bower_components//pubnub/web/pubnub.min',
 		'pubnub-angular': '../bower_components//pubnub-angular/lib/pubnub-angular',
-		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min'
+		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
+		'angular-google-analytics': '../bower_components/angular-google-analytics/dist/angular-google-analytics.min'
 	},
 	shim: {
 		angular: {
@@ -41,6 +42,9 @@ require.config({
 			deps: [ 'jquery' ]
 		},
 		'angular-bootstrap': {
+			deps: [ 'angular' ]
+		},
+		'angular-google-analytics': {
 			deps: [ 'angular' ]
 		},
 		cs: {
