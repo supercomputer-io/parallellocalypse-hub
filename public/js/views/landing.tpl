@@ -11,8 +11,9 @@
 
 	<div class='container'>
 		<div class='row'>
-			<div class='col-xs-8 col-xs-offset-2 text-center'>
-				<h2>We're out to build the world's most efficient distributed supercomputer using only Parallella boards</h2>
+			<div class='col-xs-8 col-xs-offset-2 text-center project-description'>
+				<h2>We're out to build the world's most efficient distributed supercomputer using only Parallella boards.</h2>
+				<h3>The first live test will be run at the <a href="{{conferenceLink}}" target='blank'>Parallella Technical Conference</a> in Tokyo on May 30th!</h3>
 			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
 		</div>
@@ -45,7 +46,7 @@
 		<div class='row text-center'>
 			<div class='col-sm-4'>
 				<div class='row'>
-					<p>Step 1</p>
+					<p class='step-title'>Step 1</p>
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
@@ -56,7 +57,7 @@
 			</div>
 			<div class='col-sm-4'>
 				<div class='row'>
-					<p>Step 2</p>
+					<p class='step-title'>Step 2</p>
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
@@ -67,7 +68,7 @@
 			</div>
 			<div class='col-sm-4'>
 				<div class='row'>
-					<p>Step 3</p>
+					<p class='step-title'>Step 3</p>
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
@@ -79,5 +80,4 @@
 			</div>
 		</div>
 	</div>
-	<download></download>
 </div>

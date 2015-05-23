@@ -8,8 +8,6 @@ define [
 	'cs!./controllers/login_controller',
 	'cs!./helpers/create_poll',
 	'cs!./helpers/auth',
-	'EventEmitter',
-	'GA',
 	'angular-route',
 	'angular-timeago',
 	'ng-file-upload',
@@ -18,15 +16,12 @@ define [
 	'angular-bootstrap'
 ],
 (angular, _, Restangular, devicesController, downloadController,
-workController, loginController, createPoll, Auth, evEm, GA) ->
+workController, loginController, createPoll, Auth) ->
 
 	try
 		angular.module('templateCache')
 	catch
 		angular.module('templateCache', [])
-
-	GA.ready (ga) ->
-		ga('send', 'pageview')
 
 	angular
 		.module('app', [

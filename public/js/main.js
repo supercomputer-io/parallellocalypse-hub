@@ -24,8 +24,6 @@ require.config({
 		'ng-file-upload': '../bower_components//ng-file-upload/ng-file-upload.min',
 		pubnub: '../bower_components//pubnub/web/pubnub.min',
 		'pubnub-angular': '../bower_components//pubnub-angular/lib/pubnub-angular',
-		EventEmitter: '../bower_components/event-emitter/dist/EventEmitter',
-		GA: '../bower_components/requirejs-google-analytics/dist/GoogleAnalytics',
 		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min'
 	},
 	shim: {
