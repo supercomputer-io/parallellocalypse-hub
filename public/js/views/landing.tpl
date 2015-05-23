@@ -3,6 +3,16 @@
 		<div class='container'>
 			<div class='col-sm-6'>
 				<h1>The most efficient Supercomputer on the Planet</h1>
+				<div class='row'>
+					<div class='col-sm-3 col-sm-offset-3'>
+						<div class='uibox'>
+							<h4>Online CPU Cores</h4>
+							<div class='number-in-box'>
+								<h1>{{numDevices * 18 || 'Loading...' }}</h1>
+							</div>
+						</div>
+					</div>
+				</div>
 				<h2>Help us democratize access to supercomputing for the scientists that need it. All you need is a Parallella computer to get started.</h2>
 				<p>
 					<div class='col-sm-4'><a class="btn btn-block btn-landing-green" ng-click="scrollTo('participate')" role="button">Get started</a></div></p>
@@ -37,27 +47,6 @@
 				<!-- Cool diagram goes here -->
 			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
-		</div>
-		<div class='row'>
-			<div class='col-xs-12 text-center project-description'>
-				<h1 class='landing-h'>Our numbers are growing. Join us!</h1>
-			</div>
-			<div class='col-sm-3 col-sm-offset-3'>
-				<div class='uibox'>
-					<h4>Total devices</h4>
-					<div class='number-in-box'>
-						<h1>{{totalDevices || 0 | number}}</h1>
-					</div>
-				</div>
-			</div>
-			<div class='col-sm-3'>
-				<div class='uibox'>
-					<h4>Devices Online right now</h4>
-					<div class='number-in-box'>
-						<h1>{{numDevices || 'Loading...' }}</h1>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class='row'>
 			<hr class='col-xs-10 col-xs-offset-1'>
