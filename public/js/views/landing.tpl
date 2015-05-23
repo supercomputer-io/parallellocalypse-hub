@@ -54,7 +54,7 @@
 				<div class='uibox'>
 					<h4>Devices Online right now</h4>
 					<div class='number-in-box'>
-						<h1>{{numDevices || 0 | number}}</h1>
+						<h1>{{numDevices || 'Loading...' }}</h1>
 					</div>
 				</div>
 			</div>
