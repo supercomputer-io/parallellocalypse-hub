@@ -49,7 +49,7 @@
 				</div>
 				<div class='row box-step'>
 					<div class='well'>
-						<p>Download</p>
+						<button class='btn btn-primary' ng-click='openDownloadModal()'>Download</button>
 					</div>
 					Download the OS image
 				</div>
@@ -79,4 +79,5 @@
 			</div>
 		</div>
 	</div>
+	<download></download>
 </div>

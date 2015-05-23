@@ -25,7 +25,8 @@ require.config({
 		pubnub: '../bower_components//pubnub/web/pubnub.min',
 		'pubnub-angular': '../bower_components//pubnub-angular/lib/pubnub-angular',
 		EventEmitter: '../bower_components/event-emitter/dist/EventEmitter',
-		GA: '../bower_components/requirejs-google-analytics/dist/GoogleAnalytics'
+		GA: '../bower_components/requirejs-google-analytics/dist/GoogleAnalytics',
+		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min'
 	},
 	shim: {
 		angular: {
@@ -40,6 +41,9 @@ require.config({
 		},
 		bootstrap: {
 			deps: [ 'jquery' ]
+		},
+		'angular-bootstrap': {
+			deps: [ 'angular' ]
 		},
 		cs: {
 			deps: [ 'cache' ]

@@ -1,7 +1,7 @@
 define [
 ], ->
-	return ['$scope', '$sce', 'config', '$anchorScroll', '$location',
-		($scope, $sce, config, $anchorScroll, $location) ->
+	return ['$scope', '$sce', 'config', '$anchorScroll', '$location', '$modal',
+		($scope, $sce, config, $anchorScroll, $location, $modal) ->
 			$scope.downloadUrl = '/api/download'
 
 			$scope.scrollTo = (id) ->
@@ -9,29 +9,15 @@ define [
 				$anchorScroll.yOffset = 50
 				$anchorScroll()
 
-			$scope.$watch 'parallella', (parallella) ->
-				if parallella.processorType == 'Z7010'
-					parallella.coprocessorCore = '16'
 
-				console.log(parallella.networkConfig.type)
-				if parallella.networkConfig.type == 'ethernet'
-					downloadUrl = config.s3url
-					downloadUrl += 'os/resin-parallellocalypse-0.1.0-0.0.14-'
-					downloadUrl += parallella.processorType
-					downloadUrl += '-' + parallella.coprocessorCore
-					downloadUrl += '-hdmi' if parallella.hdmi?
-					downloadUrl += '.img'
+			$scope.openDownloadModal = ->
+				$scope.downloadModal = $modal.open {
+					templateUrl: '/js/views/download.tpl'
+					controller: ($scope) ->
+						$scope.downloadUrl = {
+							Z7010: $sce.trustAsResourceUrl(config.s3url + 'os/resin-supercomputer-0.1.0-0.0.14-Z7010-16.img')
+							Z7020: $sce.trustAsResourceUrl(config.s3url + 'os/resin-supercomputer-0.1.0-0.0.14-Z7020-16.img')
+						}
+				}
 
-					$scope.downloadUrl = $sce.trustAsResourceUrl(downloadUrl)
-				else
-					$scope.downloadUrl = '/api/download'
-			, true
-
-			$scope.parallella = {
-				networkConfig:
-					type: 'ethernet'
-				processorType: 'Z7010'
-				coprocessorCore: '16'
-				hdmi: null
-			}
 	]

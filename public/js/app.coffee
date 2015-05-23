@@ -14,7 +14,8 @@ define [
 	'angular-timeago',
 	'ng-file-upload',
 	'pubnub-angular',
-	'bootstrap'
+	'bootstrap',
+	'angular-bootstrap'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth, evEm, GA) ->
@@ -37,8 +38,9 @@ workController, loginController, createPoll, Auth, evEm, GA) ->
 			'Auth',
 			'yaru22.angular-timeago',
 			'ngFileUpload',
-			'pubnub.angular.service'
-			'templateCache'
+			'pubnub.angular.service',
+			'templateCache',
+			'ui.bootstrap'
 		])
 
 		.value 'config',
@@ -72,7 +74,7 @@ workController, loginController, createPoll, Auth, evEm, GA) ->
 					templateUrl: '/js/views/faq.tpl'
 				.when '/download',
 					controller: downloadController
-					templateUrl: '/js/views/download.tpl'
+					templateUrl: '/js/views/landing.tpl'
 				.when '/',
 					controller: downloadController
 					templateUrl: '/js/views/landing.tpl'
