@@ -14,7 +14,6 @@
 	<div class='container'>
 		<div class='row'>
 			<div class='col-xs-8 col-xs-offset-2 text-center project-description'>
-				<h2>We're out to build the world's most efficient distributed supercomputer using only Parallella boards.</h2>
 				<h3>The first live test will be run at the <a href="{{conferenceLink}}" target='blank'>Parallella Technical Conference</a> in Tokyo on May 30th!</h3>
 			</div>
 			<hr class='col-xs-10 col-xs-offset-1'>
@@ -28,9 +27,8 @@
 		<div class='row'>
 			<div class='col-xs-7 col-xs-offset-3'>
 				<ol class='workflow-list'>
-					<li><b>Developers</b> push applications to the supercomputer.io repository.</li>
-					<li><b>Workers</b> contribute their unused Parallella boards to the cause.</li>
-					<li><b>Scientists</b> put in work requests to use supercomputer.io applications.</li>
+					<li><b>Owners</b> contribute their unused Parallella boards to the cause.</li>
+					<li><b>Scientists</b> put in requests to use supercomputer.io.</li>
 				</ol>
 			</div>
 		</div>
