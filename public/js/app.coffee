@@ -65,6 +65,9 @@ workController, loginController, createPoll, Auth) ->
 				.when '/faq',
 					controller: downloadController
 					templateUrl: '/js/views/faq.tpl'
+				.when '/install',
+					controller: downloadController
+					templateUrl: '/js/views/landing.tpl'
 				.when '/download',
 					controller: downloadController
 					templateUrl: '/js/views/landing.tpl'

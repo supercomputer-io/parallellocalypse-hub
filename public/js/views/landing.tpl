@@ -60,9 +60,11 @@
 					<p class='step-title'>Step 2</p>
 				</div>
 				<div class='row box-step'>
-					<div class='well'>
-						<p>Image SD card</p>
-					</div>
+					<a href="#/install">
+						<div class='well'>
+							<img src='/img/sdcard.png'>
+						</div>
+					</a>
 					Write OS to SD card
 				</div>
 			</div>

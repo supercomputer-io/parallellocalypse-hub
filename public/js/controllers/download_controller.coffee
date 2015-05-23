@@ -30,4 +30,18 @@ define [
 
 			if $location.path() == '/download'
 				$scope.openDownloadModal()
+
+			$scope.openInstructions = ->
+				$scope.instructionsModal = $modal.open {
+					templateUrl: '/js/views/install.tpl'
+					controller: ['$scope', '$modalInstance', ($scope, $modalInstance) ->
+						$scope.close = ->
+							$modalInstance.dismiss()
+					]
+				}
+
+			$rootScope.openInstructions = $scope.openInstructions
+
+			if $location.path() == '/install'
+				$scope.openInstructions()
 	]
