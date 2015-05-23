@@ -15,6 +15,7 @@ module.exports = (passport) ->
 		Device.findOne {macAddress: req.body.macAddress}, (err, device) ->
 			if device?
 				device.location = req.body.location
+				device.resinId = req.body.resinId
 			else
 				device = new Device(req.body)
 			device.save (err) ->
