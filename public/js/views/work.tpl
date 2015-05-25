@@ -67,7 +67,7 @@
 						<div class="world-map"></div>
 						<table class="device-stats">
 							<tr><th>Location</th><th>Devices</th></tr>
-							<tr ng-repeat="(countryState, device in countryDevices)" class="content f16">
+							<tr ng-repeat="(countryState, device) in countryDevices" class="content f16">
 								<td><span class="flag {{device.country | lowercase}}"></span>{{countryState}}</td><td>{{device.count}}</td>
 							</tr>
 						</table>
