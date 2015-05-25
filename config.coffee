@@ -17,6 +17,7 @@ if !fs.existsSync('config.json')
 			secret: process.env.S3_SECRET
 			bucket: process.env.S3_BUCKET
 			directory: process.env.S3_DIRECTORY
+			url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
 		}
 	}
 else

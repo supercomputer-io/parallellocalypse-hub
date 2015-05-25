@@ -18,8 +18,8 @@ define [
 					templateUrl: '/js/views/download.tpl'
 					controller: ['$scope', '$modalInstance', ($scope, $modalInstance) ->
 						$scope.downloadUrl = {
-							Z7010: $sce.trustAsResourceUrl(config.s3url + 'os/resin-supercomputer-0.1.0-0.0.14-Z7010-16.img')
-							Z7020: $sce.trustAsResourceUrl(config.s3url + 'os/resin-supercomputer-0.1.0-0.0.14-Z7020-16.img')
+							Z7010: $sce.trustAsResourceUrl('api/download/Z7010')
+							Z7020: $sce.trustAsResourceUrl('api/download/Z7020')
 						}
 						$scope.close = ->
 							$modalInstance.dismiss()
