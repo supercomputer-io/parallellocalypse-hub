@@ -1,9 +1,10 @@
 define [
+	'reCAPTCHA'
 	'angular-bootstrap'
 ], ->
 	return ['$scope', '$sce', 'config', '$anchorScroll', '$location',
-		'$modal', '$rootScope', 'createPoll', 'PubNub', 'Restangular'
-		($scope, $sce, config, $anchorScroll, $location, $modal, $rootScope, createPoll, PubNub, Restangular) ->
+		'$modal', '$rootScope', 'createPoll', 'PubNub', 'Restangular', '$window'
+		($scope, $sce, config, $anchorScroll, $location, $modal, $rootScope, createPoll, PubNub, Restangular, $window) ->
 
 			$scope.scrollTo = (id) ->
 				$location.hash(id)
@@ -12,6 +13,17 @@ define [
 
 
 			$scope.conferenceLink = $sce.trustAsResourceUrl('https://www.parallella.org/2015/03/23/first-parallella-technical-conference-ptc-to-be-held-in-tokyo/')
+
+
+			if $location.path() == '/contact'
+				$scope.$watch () ->
+					return $window.grecaptcha and $window.grecaptcha.render
+				, (n, o)->
+					if $window.grecaptcha and $window.grecaptcha.render
+						$window.grecaptcha.render('recaptcha',{
+							sitekey: '6LfDXAcTAAAAAGXwzN7-9m0CcUnXxMZnRZSHhM9F'
+						})
+
 
 			$scope.openDownloadModal = ->
 				$scope.downloadModal = $modal.open {

@@ -100,6 +100,7 @@ app.use(passport.session())
 app.use('/', require('./controllers/auth_controller').router(passport))
 
 app.use('/api/', require('./controllers/devices_controller')(passport))
+app.use('/api/', require('./controllers/contact_controller'))
 app.use('/api/', require('./controllers/download_controller'))
 app.use('/api/', require('./controllers/work_controller'))
 app.use('/api/', require('./controllers/images_controller'))

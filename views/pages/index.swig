@@ -28,6 +28,7 @@
 					<li ng-class="{ active: isActive('download') }"><a ng-click='openDownloadModal()'>Download OS</a></li>
 					<li ng-class="{ active: isActive('faq') }"><a href='#/faq'>FAQ</a></li>
 					<li ng-class="{ active: isActive('devices') }"><a href='#/devices'>Search device</a></li>
+					<li ng-class="{ active: isActive('contact') }"><a href='#/contact'>Contact Us</a></li>
 				</ul>
 				<ul class='nav navbar-nav navbar-right' ng-if='authenticated' ng-cloak>
 					<li><a ng-click='logout()'>Logout</a></li>

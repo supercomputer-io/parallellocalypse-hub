@@ -8,6 +8,7 @@ define [
 	'cs!./controllers/login_controller',
 	'cs!./helpers/create_poll',
 	'cs!./helpers/auth',
+	'reCAPTCHA',
 	'angular-route',
 	'angular-timeago',
 	'ng-file-upload',
@@ -64,6 +65,9 @@ workController, loginController, createPoll, Auth) ->
 				.when '/dashboard',
 					controller: workController
 					templateUrl: '/js/views/work.tpl'
+				.when '/contact',
+					controller: downloadController
+					templateUrl: '/js/views/contact.tpl'
 				.when '/faq',
 					controller: downloadController
 					templateUrl: '/js/views/faq.tpl'
