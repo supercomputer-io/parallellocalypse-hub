@@ -16,6 +16,7 @@ module.exports = (passport) ->
 			if device?
 				device.location = req.body.location
 				device.resinId = req.body.resinId
+				device.status = req.body.status
 			else
 				device = new Device(req.body)
 			device.save (err) ->

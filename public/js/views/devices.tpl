@@ -19,29 +19,36 @@
 				</div>
 			</div>
 			<div class="row" ng-if="device != null">
-				<div class='table-header-box'>
-					Device
-				</div>
-				<table class='ui-table table'>
-					<thead>
-						<tr>
-							<th>Status</th>
-							<th>MAC Address</th>
-							<th>Images processed</th>
-							<th>Location</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td ng-show="device.resinDevice.is_online"><i class="device-status__icon glyphicon glyphicon-ok-circle text-success"></i> {{ device.resinDevice.status }}</td>
-							<td ng-hide="device.resinDevice.is_online"><i class="device-status__icon glyphicon glyphicon-remove-circle text-danger"></i> Offline<span ng-if="device.resinDevice.last_seen_time"> (last seen: {{ device.resinDevice.last_seen_time | timeAgo }})</span></td>
-							<td>{{device.device.macAddress}}</td>
-							<td>{{device.device.totalProcessed}}</td>
-							<td class='f16'><span class="flag {{ device.device.location.country | lowercase }}"></span>{{device.device.location.city}}, {{device.device.location.country}}</td>
+				<div class='row'>
+					<div class='table-header-box'>
+						Device
+					</div>
+					<table class='ui-table table'>
+						<thead>
+							<tr>
+								<th>Status</th>
+								<th>MAC Address</th>
+								<th>Images processed</th>
+								<th>Location</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td ng-show="device.resinDevice.is_online"><i class="device-status__icon glyphicon glyphicon-ok-circle text-success"></i> {{ device.resinDevice.status }}</td>
+								<td ng-hide="device.resinDevice.is_online"><i class="device-status__icon glyphicon glyphicon-remove-circle text-danger"></i> Offline<span ng-if="device.resinDevice.last_seen_time"> (last seen: {{ device.resinDevice.last_seen_time | timeAgo }})</span></td>
+								<td>{{device.device.macAddress}}</td>
+								<td>{{device.device.totalProcessed}}</td>
+								<td class='f16'><span class="flag {{ device.device.location.country | lowercase }}"></span>{{device.device.location.city}}, {{device.device.location.country}}</td>
 
-						</tr>
-					</tbody>
-				</table>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class='row'>
+					<div class='alert alert-danger' ng-if="device.device.status == 'Overheating'">
+						<p>Your board seems to be overheating. Please add a fan and heatsink for it to work correctly.</p>
+					</div>
+				</div>
 			</div>
 			<div class="row" ng-if="device == null">
 			</div>
