@@ -43,7 +43,7 @@ workController, loginController, createPoll, Auth) ->
 
 		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics', '$http',
 		($rootScope, Restangular, PubNub, Auth, $location, Analytics, $http) ->
-			$http.get '/api/subscribe_key', (subKey) ->
+			$http.get('/subscribe_key').success (subKey) ->
 				PubNub.init
 					subscribe_key: subKey
 
