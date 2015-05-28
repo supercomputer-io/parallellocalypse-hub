@@ -1,4 +1,5 @@
 express = require 'express'
+config = require('../config')
 router = express.Router()
 module.exports = {
 	isLoggedIn: (req, res, next) ->
@@ -15,6 +16,8 @@ module.exports = {
 			res.send({})
 		router.get '/who', module.exports.isLoggedIn, (req, res, next) ->
 			res.send(req.user.email)
+		router.get '/subscribe_key', (req, res) ->
+			res.send(config.subscribe_key)
 
 
 }
