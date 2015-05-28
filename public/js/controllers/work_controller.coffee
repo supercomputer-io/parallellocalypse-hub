@@ -35,10 +35,12 @@ define [
 				populateWork = (work) ->
 					$scope.work = work
 
-					$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)
+					if work.targetImage?
+						$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)
+					
 					if $scope.work.status == 'Done'
 						$scope.result =
-							image: '/images/' + $scope.work.finalResult.imageUrl
+							image: $sce.trustAsResourceUrl(config.s3url + $scope.work.finalResult.imageUrl)
 							name: $scope.work.finalResult.name
 							correlation: $scope.work.finalResult.value
 					else
