@@ -41,10 +41,11 @@ workController, loginController, createPoll, Auth) ->
 		.value 'config',
 			s3url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
 
-		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics',
-		($rootScope, Restangular, PubNub, Auth, $location, Analytics) ->
-			PubNub.init
-				subscribe_key: 'sub-c-1faf9860-f5c0-11e4-b21e-02ee2ddab7fe'
+		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics', '$http',
+		($rootScope, Restangular, PubNub, Auth, $location, Analytics, $http) ->
+			$http.get '/api/subscribe_key', (subKey) ->
+				PubNub.init
+					subscribe_key: subKey
 
 			Restangular.setErrorInterceptor (response) ->
 				if response.status == 401

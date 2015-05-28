@@ -104,5 +104,8 @@ app.use('/api/', require('./controllers/download_controller'))
 app.use('/api/', require('./controllers/work_controller'))
 app.use('/api/', require('./controllers/images_controller'))
 
+app.get '/api/subscribe_key', (req, res) ->
+	res.send(config.subscribe_key)
+
 app.listen port, ->
 	console.log("Server listening on port #{port}")
