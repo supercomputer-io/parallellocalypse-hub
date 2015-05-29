@@ -54,8 +54,8 @@ define [
 				PubNub.ngSubscribe
 					channel: 'results'
 					callback: (result) ->
-						$scope.chunks[result.device] = 'green'
-						$scope.chunkStyle[result.device] = {'background-color': 'green'}
+						$scope.chunks[result.device] = 'solved'
+						$scope.chunkStyle[result.device] = 'solved'
 
 				$scope.getDevices = ->
 					PubNub.ngHereNow
@@ -71,14 +71,15 @@ define [
 
 							_.each $scope.devices, (dev) ->
 								if dev.state.status == 'Idle'
-									$scope.chunks[dev.uuid] = 'blue'
-									$scope.chunkStyle[dev.uuid] = {'background-color': 'blue'}
+									$scope.chunks[dev.uuid] = ''
+									$scope.chunkStyle[dev.uuid] = ''
 								else if dev.state.status == 'Working'
-									$scope.chunks[dev.uuid] = 'yellow'
-									$scope.chunkStyle[dev.uuid] = {'background-color': 'yellow'}
+									$scope.chunks[dev.uuid] = 'assigned'
+									$scope.chunkStyle[dev.uuid] = 'assigned'
 								else
-									$scope.chunks[dev.uuid] = 'white'
-									$scope.chunkStyle[dev.uuid] = {'background-color': 'white'}
+									$scope.chunks[dev.uuid] = 'nocache'
+									$scope.chunkStyle[dev.uuid] = 'nocache'
+
 				devicesPoll = createPoll($scope.getDevices)
 				devicesPoll.start()
 

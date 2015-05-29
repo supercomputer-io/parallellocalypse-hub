@@ -13,6 +13,9 @@
 								</div>
 							</div>
 						</div>
+						<div ng-if='!authenticated && !work.status'>
+							<h2>Nothing going on yet. Stay online for when the action begins!</h2>
+						</div>
 						<div ng-if="work.status">
 							<div class='row'>
 								<img ng-src='{{ targetImageUrl }}' class="target-image">
@@ -57,7 +60,7 @@
 						<div class="title">Devices</div>
 						<div class="container matrix-box">
 							<div class="span12 matrix">
-								<div ng-repeat='(key, val) in chunks' ng-style="chunkStyle[key]" class='device-box'></div>
+								<div ng-repeat='(key, val) in chunks' class='device-box {{chunkStyle[key]}}'></div>
 							</div>
 							<hr class="separator">
 							<div class="legends">
