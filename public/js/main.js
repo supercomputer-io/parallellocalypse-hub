@@ -66,12 +66,15 @@ require.config({
 })
 
 require([ 'angular', 'cs!./app' ], function (angular, app) {
-	if (document.readyState === 'complete') {
-		angular.bootstrap(document, [ 'app' ])
-	} else {
-		// Not ready yet.
-		angular.element(document).ready(function () {
+	jQuery.get('/subscribe_key', function(subKey) {
+		SUBSCRIBE_KEY = subKey
+		if (document.readyState === 'complete') {
 			angular.bootstrap(document, [ 'app' ])
-		})
-	}
+		} else {
+			// Not ready yet.
+			angular.element(document).ready(function () {
+				angular.bootstrap(document, [ 'app' ])
+			})
+		}
+	})
 })

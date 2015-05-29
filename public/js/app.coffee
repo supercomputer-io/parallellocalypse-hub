@@ -43,9 +43,8 @@ workController, loginController, createPoll, Auth) ->
 
 		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics', '$http',
 		($rootScope, Restangular, PubNub, Auth, $location, Analytics, $http) ->
-			$http.get('/subscribe_key').success (subKey) ->
-				PubNub.init
-					subscribe_key: subKey
+			PubNub.init
+				subscribe_key: SUBSCRIBE_KEY
 
 			Restangular.setErrorInterceptor (response) ->
 				if response.status == 401
