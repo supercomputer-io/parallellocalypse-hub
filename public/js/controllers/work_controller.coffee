@@ -39,7 +39,7 @@ define [
 
 					if work.targetImage?
 						$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)
-						$scope.targetImageResizedUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.resized.path)
+						$scope.targetImageResizedUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.image.resized.path)
 					
 					if $scope.work.status == 'Done'
 						$scope.result =
