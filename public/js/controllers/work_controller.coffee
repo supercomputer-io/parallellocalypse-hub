@@ -87,36 +87,35 @@ define [
 					Restangular.one('work/current').get().then (data) ->
 						populateWork(data) if data
 
-				if authenticated
-					$scope.uploadFile = ->
-						file = $scope.file
-						Upload.upload
-							url: '/api/work'
-							fields: {}
-							file: file
-							fileFormDataName: 'image'
-						.progress (evt) ->
-							progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
-							console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name)
-						.success (data, status, headers, config) ->
-							if data.error
-								console.log('Dispatcher is busy')
-							else
-								$scope.work = data
-							#poll.start()
-						.error ->
-							#poll.start()
+				$scope.uploadFile = ->
+					file = $scope.file
+					Upload.upload
+						url: '/api/work'
+						fields: {}
+						file: file
+						fileFormDataName: 'image'
+					.progress (evt) ->
+						progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
+						console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name)
+					.success (data, status, headers, config) ->
+						if data.error
+							console.log('Dispatcher is busy')
+						else
+							$scope.work = data
+						#poll.start()
+					.error ->
+						#poll.start()
 
-					$scope.stopWork = ->
-						Restangular.all('work/stop').post().then ->
-							console.log('Work stopped')
+				$scope.stopWork = ->
+					Restangular.all('work/stop').post().then ->
+						console.log('Work stopped')
 
-					$scope.$watch 'file', (file) ->
-						if (file?)
-							#poll.stop()
-							$scope.uploadFile()
-							$scope.result = {}
-
+				$scope.$watch 'file', (file) ->
+					if (file?)
+						#poll.stop()
+						$scope.uploadFile()
+						$scope.result = {}
+				, true
 
 				#poll = createPoll($scope.getWork)
 				#poll.start()
