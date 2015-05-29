@@ -106,6 +106,10 @@ define [
 						.error ->
 							#poll.start()
 
+					$scope.stopWork = ->
+						Restangular.all('work/stop').post().then ->
+							console.log('Work stopped')
+
 					$scope.$watch 'file', (file) ->
 						if (file?)
 							#poll.stop()

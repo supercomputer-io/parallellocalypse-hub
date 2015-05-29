@@ -4,7 +4,7 @@
 			<div class='row'>
 				<div class='image-progress col-sm-6'>
 					<div class='uibox'>
-						<div ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
+						<div ng-if="authenticated" ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
 							<!--<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>-->
 							<div ng-show="!work.status" class='drop-box'>
 								<img src="/img/drag-drop.png" style="">
@@ -26,8 +26,10 @@
 								
 							</div>
 							<div class='row'>
-								<div ng-if='result.name'>Elapsed: {{minutes}}:{{seconds}}</div>
-								<a ng-if='result.name' class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file' ngf-select>Upload another</a>
+								<div ng-if='result.name'>Elapsed: {{minutes == '00' ? '' : (minutes + ' minutes,') }}{{seconds}} seconds</div>
+								<a ng-if="(result.name || work.status == 'Stopped') && authenticated" class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file' ngf-select>Upload another</a>
+								<a ng-if="(!(result.name || work.status == 'Stopped')) && authenticated" class='btn btn-danger' ng-click='stopWork()' >Stop</a>
+
 							</div>
 						</div>
 					</div>
@@ -72,7 +74,7 @@
 						<div class="world-map"></div>
 						<table class="device-stats">
 							<tr><th>Location</th><th>Devices</th></tr>
-							<tr ng-repeat="(countryState, device in countryDevices)" class="content f16">
+							<tr ng-repeat="(countryState, device) in countryDevices" class="content f16">
 								<td><span class="flag {{device.country | lowercase}}"></span>{{countryState}}</td><td>{{device.count}}</td>
 							</tr>
 						</table>

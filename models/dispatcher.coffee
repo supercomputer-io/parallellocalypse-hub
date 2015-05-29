@@ -8,9 +8,9 @@ _ = require 'lodash'
 Image = require './image'
 Device = require './device'
 
-# The time to wait for a worker to complete an
+# The time to wait (per image) for a worker to complete an
 # assignment before reassigning it to someone else
-ASSIGNMENT_EXPIRATION = 6000
+ASSIGNMENT_EXPIRATION = 15
 
 Dispatcher =
 
@@ -107,12 +107,13 @@ Dispatcher =
 
 			expiredAssignments = _.filter d.workload.assigned, (chunk) ->
 				if chunk?
-					return !d.workload.results[chunk.chunkId]? && chunk.assignTime < (Date.now() - ASSIGNMENT_EXPIRATION)
+					return !d.workload.results[chunk.chunkId]? && chunk.assignTime < (Date.now() - (workload.chunkSize * ASSIGNMENT_EXPIRATION))
 				else
 					return false
 
 			_.each expiredAssignments, (assignment) ->
 				d.workload.assigned[assignment.chunkId] = null
+				d.work.workerAssigned[assignment.worker] = null
 				d.workload.numAssigned -= 1
 
 			while(chunkId < d.workload.numChunks && workerList.length > 0)
@@ -212,6 +213,22 @@ Dispatcher =
 				d.work.workloadModified = false
 				d.workload.save()
 		, 1000
+
+	stop: ->
+		d.work.workloadModified = false
+		clearInterval(d.work.distributeInterval)
+		clearInterval(d.work.saveInterval)
+		console.log('The ultimate result is:')
+		d.workload.finishTime = Date.now()
+		d.workload.status = 'Stopped'
+		d.workload.save()
+		publishWorkload()
+
+		_.defer ->
+			pubnub.unsubscribe({
+				channel: ['results', 'working']
+			})
+			d.idle = true
 
 	warmCache: ->
 		Image.count {target: false}, (err, count) ->

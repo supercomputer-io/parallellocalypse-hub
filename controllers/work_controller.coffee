@@ -18,6 +18,11 @@ router.all '/warmup', auth.isLoggedIn, (req, res, next) ->
 	dispatcher.warmCache()
 	res.send('OK')
 
+router.post '/work/stop', (req, res) ->
+	if !dispatcher.idle
+		dispatcher.stop()
+	res.send({})
+
 router.post '/work', auth.isLoggedIn, (req, res, next) ->
 	if dispatcher.idle
 		workload = new Workload({
@@ -41,7 +46,6 @@ router.post '/work', auth.isLoggedIn, (req, res, next) ->
 					res.send(workload)
 	else
 		res.send({error: 'Dispatcher is busy'})
-
 
 router.get '/work', auth.isLoggedIn, (req, res, next) ->
 	Workload.find({}).populate('targetImage').exec (err, workloads) ->
