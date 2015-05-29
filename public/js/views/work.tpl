@@ -5,7 +5,7 @@
 				<div class='image-progress col-sm-6'>
 					<div class='uibox'>
 						<div ng-show="authenticated">
-							<div ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
+							<div ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file'>
 								<!--<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>-->
 								<div ng-show="!work.status" class='drop-box'>
 									<img src="/img/drag-drop.png" style="">
@@ -22,10 +22,11 @@
 							<div class='row'>
 								<img ng-src='{{ targetImageUrl }}' class="target-image">
 								<div class="progress-loader">
-									<h4>Searching Database...</h4>
+									<h4 ng-show='!result.name'>Searching Database...</h4>
+									<h4 ng-show='result.name'>The image is:</h4>
 									<img ng-if='!result.name' src="/img/loader.gif" class="loader">
-									<h2 ng-if='result.name' class="loader">{{result.name}}</h2>
-									<progress max="100" value="{{(work.numResults / work.numChunks * 100) | number }}"></progress>
+									<h2 ng-if='result.name' class="result-name">{{result.name}}</h2>
+									<progressbar class='progress' max="100" value="{{(work.numResults / work.numChunks * 100) | number }}"></progressbar>
 								</div>
 								<img ng-src='{{ targetImageResizedUrl }}' class="target-image result">
 								
@@ -33,7 +34,7 @@
 							<div class='row'>
 								<div ng-if='result.name'>Elapsed: {{minutes == '00' ? '' : (minutes + ' minutes,') }}{{seconds}} seconds</div>
 								<div ng-show="(result.name || work.status == 'Stopped') && authenticated">
-									<a class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2' ngf-select>Upload another</a>
+									<a class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2'>Upload another</a>
 								</div>
 								<a ng-if="(!(result.name || work.status == 'Stopped')) && authenticated" class='btn btn-danger' ng-click='stopWork()' >Stop</a>
 
