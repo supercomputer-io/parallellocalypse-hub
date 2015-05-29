@@ -33,6 +33,13 @@ ImageSchema.plugin(attachments, {
 		image: {
 			styles: {
 				original: {},
+				resized: {
+					gravity: 'southwest',
+					background: 'black',
+					extent: '256x256',
+					resize: '64x64',
+					colorspace: 'Gray'
+				}
 			}
 		}
 	}
