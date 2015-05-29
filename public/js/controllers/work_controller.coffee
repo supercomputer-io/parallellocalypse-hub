@@ -36,6 +36,7 @@ define [
 
 				populateWork = (work) ->
 					$scope.work = work
+					$scope.progress = { width: (Math.round(work.numResults / work.numChunks * 100)).toString() + '%'  }
 
 					if work.targetImage?
 						$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)

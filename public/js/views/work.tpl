@@ -26,7 +26,7 @@
 									<h4 ng-show='result.name'>The image is:</h4>
 									<img ng-if='!result.name' src="/img/loader.gif" class="loader">
 									<h2 ng-if='result.name' class="result-name">{{result.name}}</h2>
-									<progressbar class='progress' max="100" value="{{(work.numResults / work.numChunks * 100) | number }}"></progressbar>
+									<div class='progress'><div class='progress-bar' ng-style="progress" /></div>
 								</div>
 								<img ng-src='{{ targetImageResizedUrl }}' class="target-image result">
 								
