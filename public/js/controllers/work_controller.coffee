@@ -111,6 +111,7 @@ define [
 						console.log('Work stopped')
 
 				$scope.$watch 'file', (file) ->
+					console.log('fwatch')
 					if (file?)
 						#poll.stop()
 						$scope.uploadFile()
