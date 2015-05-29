@@ -14,7 +14,7 @@
 							</div>
 						</div>
 						<div ng-if='!authenticated && !work.status'>
-							<h2>Nothing going on yet. Stay online for when the action begins!</h2>
+							<h2>Nothing going on yet. Stay online for when the action begins!</h2>	
 						</div>
 						<div ng-if="work.status">
 							<div class='row'>
@@ -30,7 +30,7 @@
 							</div>
 							<div class='row'>
 								<div ng-if='result.name'>Elapsed: {{minutes == '00' ? '' : (minutes + ' minutes,') }}{{seconds}} seconds</div>
-								<a ng-if="(result.name || work.status == 'Stopped') && authenticated" class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file' ngf-select>Upload another</a>
+								<a ng-if="(result.name || work.status == 'Stopped') && authenticated" class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2' ngf-select>Upload another</a>
 								<a ng-if="(!(result.name || work.status == 'Stopped')) && authenticated" class='btn btn-danger' ng-click='stopWork()' >Stop</a>
 
 							</div>

@@ -87,8 +87,7 @@ define [
 					Restangular.one('work/current').get().then (data) ->
 						populateWork(data) if data
 
-				$scope.uploadFile = ->
-					file = $scope.file
+				$scope.uploadFile = (file)->
 					Upload.upload
 						url: '/api/work'
 						fields: {}
@@ -114,7 +113,15 @@ define [
 					console.log('fwatch')
 					if (file?)
 						#poll.stop()
-						$scope.uploadFile()
+						$scope.uploadFile(file)
+						$scope.result = {}
+				, true
+
+				$scope.$watch 'file2', (file) ->
+					console.log('fwatch')
+					if (file?)
+						#poll.stop()
+						$scope.uploadFile(file)
 						$scope.result = {}
 				, true
 
