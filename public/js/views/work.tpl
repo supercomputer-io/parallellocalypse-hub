@@ -27,7 +27,7 @@
 									<h2 ng-if='result.name' class="loader">{{result.name}}</h2>
 									<progress max="100" value="{{(work.numResults / work.numChunks * 100) | number }}"></progress>
 								</div>
-								<img ng-if="!result.name" ng-src='{{ targetImageResizedUrl }}' class="target-image result">
+								<img ng-src='{{ targetImageResizedUrl }}' class="target-image result">
 								
 							</div>
 							<div class='row'>
