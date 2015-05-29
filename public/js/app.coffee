@@ -39,7 +39,7 @@ workController, loginController, createPoll, Auth) ->
 		])
 
 		.value 'config',
-			s3url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com/'
+			s3url: 'http://parallellocalypse.s3-website-us-east-1.amazonaws.com'
 
 		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics', '$http',
 		($rootScope, Restangular, PubNub, Auth, $location, Analytics, $http) ->

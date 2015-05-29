@@ -1,5 +1,6 @@
 config = require('../config')
 pubnub = require('pubnub')({
+	origin: 'resin.pubnub.com'
 	subscribe_key: config.subscribe_key
 	publish_key: config.publish_key
 })

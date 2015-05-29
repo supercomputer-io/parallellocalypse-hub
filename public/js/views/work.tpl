@@ -14,15 +14,20 @@
 							</div>
 						</div>
 						<div ng-if="work.status">
-							<img ng-src='{{ targetImageUrl }}' class="target-image">
-							<div class="progress-loader">
-								<h4>Searching Database...</h4>
-								<img src="/img/loader.gif" class="loader">
-								<progress max="100" value="44"></progress>
+							<div class='row'>
+								<img ng-src='{{ targetImageUrl }}' class="target-image">
+								<div class="progress-loader">
+									<h4>Searching Database...</h4>
+									<img ng-if='!result.name' src="/img/loader.gif" class="loader">
+									<h2 ng-if='result.name' class="loader">{{result.name}}</h2>
+									<progress max="100" value="{{(work.numResults / work.numChunks * 100) | number }}"></progress>
+								</div>
+								<img ng-if="!result.name" ng-src='{{ targetImageUrl }}' class="target-image result">
+								
 							</div>
-							<img ng-if="!result.name" ng-src='{{ targetImageUrl }}' class="target-image result">
-							<div class='col-sm-8'>
-								<h2 ng-if='result.name'>{{result.name}}</h2>
+							<div class='row'>
+								<div ng-if='result.name'>Elapsed: {{minutes}}:{{seconds}}</div>
+								<a ng-if='result.name' class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file' ngf-select>Upload another</a>
 							</div>
 						</div>
 					</div>
