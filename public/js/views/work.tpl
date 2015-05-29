@@ -4,12 +4,14 @@
 			<div class='row'>
 				<div class='image-progress col-sm-6'>
 					<div class='uibox'>
-						<div ng-if="authenticated" ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
-							<!--<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>-->
-							<div ng-show="!work.status" class='drop-box'>
-								<img src="/img/drag-drop.png" style="">
-								<div class="instructions">
-									<div><h4>drag & drop</h4><br>your image here or <span style="text-decoration: underline">browse</span></div>
+						<div ng-if="authenticated">
+							<div ngf-select ngf-drop ngf-accept="'image/*'" ng-model='file' ngf-select>
+								<!--<img ng-if="work.status" ng-src='{{ "/images/" + work.targetImage.original_img }}' class='col-sm-12'>-->
+								<div ng-show="!work.status" class='drop-box'>
+									<img src="/img/drag-drop.png" style="">
+									<div class="instructions">
+										<div><h4>drag & drop</h4><br>your image here or <span style="text-decoration: underline">browse</span></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -30,7 +32,9 @@
 							</div>
 							<div class='row'>
 								<div ng-if='result.name'>Elapsed: {{minutes == '00' ? '' : (minutes + ' minutes,') }}{{seconds}} seconds</div>
-								<a ng-if="(result.name || work.status == 'Stopped') && authenticated" class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2' ngf-select>Upload another</a>
+								<div ng-if="(result.name || work.status == 'Stopped') && authenticated">
+									<a class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2' ngf-select>Upload another</a>
+								</div>
 								<a ng-if="(!(result.name || work.status == 'Stopped')) && authenticated" class='btn btn-danger' ng-click='stopWork()' >Stop</a>
 
 							</div>

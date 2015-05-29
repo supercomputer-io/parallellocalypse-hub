@@ -5,6 +5,8 @@ define [
 	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth', '$sce', 'config',
 		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth, $sce, config) ->
 
+			$scope.target = {}
+
 			Auth.check (authenticated) ->
 				$scope.authenticated = authenticated
 
