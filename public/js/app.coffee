@@ -44,6 +44,7 @@ workController, loginController, createPoll, Auth) ->
 		.run([ '$rootScope', 'Restangular' , 'PubNub', 'Auth', '$location', 'Analytics', '$http',
 		($rootScope, Restangular, PubNub, Auth, $location, Analytics, $http) ->
 			PubNub.init
+				origin: 'resin.pubnub.com'
 				subscribe_key: SUBSCRIBE_KEY
 
 			Restangular.setErrorInterceptor (response) ->
