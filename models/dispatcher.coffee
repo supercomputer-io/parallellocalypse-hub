@@ -215,6 +215,7 @@ Dispatcher =
 		, 1000
 
 	stop: ->
+		d = this
 		d.work.workloadModified = false
 		clearInterval(d.work.distributeInterval)
 		clearInterval(d.work.saveInterval)
