@@ -142,7 +142,7 @@ define [
 						console.log('fwatch')
 						if ($scope.file?)
 							#poll.stop()
-							$scope.uploadFile(file)
+							$scope.uploadFile($scope.file)
 							$scope.result = {}
 					, true
 
