@@ -64,7 +64,7 @@ define [
 						$scope.progress = { width: (Math.round(work.numResults / work.numChunks * 100)).toString() + '%'  }
 
 						if work.targetImage?
-							$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.path)
+							$scope.targetImageUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.image.original.path)
 							$scope.targetImageResizedUrl = $sce.trustAsResourceUrl(config.s3url + work.targetImage.image.resized.path)
 						
 						if $scope.work.status == 'Done'
