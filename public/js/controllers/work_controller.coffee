@@ -86,6 +86,10 @@ define [
 							$scope.chunks[result.device] = 'solved'
 							$scope.chunkStyle[result.device] = {style: 'solved', uuid: result.device}
 
+					$scope.chunks = {}
+
+					$scope.chunkStyle = {}
+
 					$scope.getDevices = ->
 						PubNub.ngHereNow
 							channel: 'work'
@@ -94,10 +98,7 @@ define [
 
 								$scope.devices = data[0].uuids
 
-								$scope.chunks = {}
-
-								$scope.chunkStyle = {}
-
+								
 								_.each $scope.devices, (dev) ->
 									if dev.state.status == 'Idle'
 										$scope.chunks[dev.uuid] = ''
