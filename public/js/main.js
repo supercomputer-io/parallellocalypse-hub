@@ -26,7 +26,8 @@ require.config({
 		'pubnub-angular': '../bower_components//pubnub-angular/lib/pubnub-angular',
 		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
 		'angular-google-analytics': '../bower_components/angular-google-analytics/dist/angular-google-analytics.min',
-		'angular-google-maps': '../bower_components/angular-google-maps/dist/angular-google-maps'
+		'angular-google-maps': '../bower_components/angular-google-maps/dist/angular-google-maps',
+		'angular-order-object-by': '../bower_components/angular-order-object-by/src/ng-order-object-by'
 	},
 	shim: {
 		angular: {
@@ -65,6 +66,9 @@ require.config({
 		},
 		'angular-google-maps': {
 			deps: [ 'angular', 'lodash' ]
+		},
+		'angular-order-object-by': {
+			deps: [ 'angular' ]
 		}
 	}
 })

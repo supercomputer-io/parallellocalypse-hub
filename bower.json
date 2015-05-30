@@ -35,7 +35,8 @@
     "requirejs-google-analytics": "~0.1.11",
     "angular-bootstrap": "~0.13.0",
     "angular-google-analytics": "~0.0.15",
-    "angular-google-maps": "~2.1.1"
+    "angular-google-maps": "~2.1.1",
+    "angular-order-object-by": "~1.1.1"
   },
   "resolutions": {
     "lodash": "~3.8.0"

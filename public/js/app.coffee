@@ -15,7 +15,8 @@ define [
 	'bootstrap',
 	'angular-bootstrap',
 	'angular-google-analytics',
-	'angular-google-maps'
+	'angular-google-maps',
+	'angular-order-object-by'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
@@ -37,7 +38,8 @@ workController, loginController, createPoll, Auth) ->
 			'templateCache',
 			'ui.bootstrap',
 			'angular-google-analytics',
-			'uiGmapgoogle-maps'
+			'uiGmapgoogle-maps',
+			'ngOrderObjectBy'
 		])
 
 		.value 'config',

@@ -84,7 +84,7 @@ define [
 						channel: 'results'
 						callback: (result) ->
 							$scope.chunks[result.device] = 'solved'
-							$scope.chunkStyle[result.device] = 'solved'
+							$scope.chunkStyle[result.device] = {style: 'solved', uuid: dev.uuid}
 
 					$scope.getDevices = ->
 						PubNub.ngHereNow
@@ -101,13 +101,13 @@ define [
 								_.each $scope.devices, (dev) ->
 									if dev.state.status == 'Idle'
 										$scope.chunks[dev.uuid] = ''
-										$scope.chunkStyle[dev.uuid] = ''
+										$scope.chunkStyle[dev.uuid] = {style: '', uuid: dev.uuid}
 									else if dev.state.status == 'Working'
 										$scope.chunks[dev.uuid] = 'assigned'
-										$scope.chunkStyle[dev.uuid] = 'assigned'
+										$scope.chunkStyle[dev.uuid] = {style: 'assigned', uuid: dev.uuid}
 									else
 										$scope.chunks[dev.uuid] = 'nocache'
-										$scope.chunkStyle[dev.uuid] = 'nocache'
+										$scope.chunkStyle[dev.uuid] = {style: 'noache', uuid: dev.uuid}
 
 					devicesPoll = createPoll($scope.getDevices)
 					devicesPoll.start()

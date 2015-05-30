@@ -65,7 +65,7 @@
 						<div class="title">Devices</div>
 						<div class="container matrix-box">
 							<div class="span12 matrix">
-								<div ng-repeat='(key, val) in chunks' class='device-box {{chunkStyle[key]}}'></div>
+								<div ng-repeat="chunk in chunkStyle | orderObjectBy : 'uuid' : false " class='device-box {{chunk.style}}'></div>
 							</div>
 							<hr class="separator">
 							<div class="legends">
