@@ -28,7 +28,7 @@
 									<h2 ng-if='result.name' class="result-name">{{result.name}}</h2>
 									<div class='progress'><div class='progress-bar' ng-style="progress"></div></div>
 								</div>
-								<img ng-src='{{ targetImageResizedUrl }}' class="target-image result">
+								<img ng-src='{{ targetImageUrl }}' class="target-image result">
 								
 							</div>
 							<div class='row'>

@@ -154,8 +154,8 @@ define [
 							$scope.result = {}
 					, true
 
-					#poll = createPoll($scope.getWork)
-					#poll.start()
-					$scope.getWork()
+					poll = createPoll($scope.getWork)
+					poll.start()
+					#$scope.getWork()
 
 	]
