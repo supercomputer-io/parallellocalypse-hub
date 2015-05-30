@@ -31,6 +31,7 @@
 					<li ng-class="{ active: isActive('dashboard') }" ng-if='!authenticated'><a href='#/dashboard'>Dashboard</a></li>
 				</ul>
 				<ul class='nav navbar-nav navbar-right' ng-if='authenticated' ng-cloak>
+					<li><a ng-click='warmCache()'>Warm Cache</a></li>
 					<li><a ng-click='logout()'>Logout</a></li>
 				</ul>
 			</div>

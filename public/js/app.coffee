@@ -56,6 +56,9 @@ workController, loginController, createPoll, Auth) ->
 				return true
 
 			$rootScope.logout = Auth.logout
+			$rootScope.warmCache = ->
+				Restangular.all('warmup').post().then ->
+					console.log('warming cache')
 			$rootScope.isActive = (view) ->
 				return $location.path().split('/')[1] == view
 		])
