@@ -34,7 +34,7 @@
 							<div class='row'>
 								<div ng-if='result.name'>Elapsed: {{minutes == '00' ? '' : (minutes + ' minutes,') }}{{seconds}} seconds</div>
 								<div ng-show="(result.name || work.status == 'Stopped') && authenticated">
-									<a class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2'>Upload another</a>
+									<div class='btn btn-success' ngf-select ngf-accept="'image/*'" ng-model='file2'>Upload another</div>
 								</div>
 								<a ng-if="(!(result.name || work.status == 'Stopped')) && authenticated" class='btn btn-danger' ng-click='stopWork()' >Stop</a>
 
