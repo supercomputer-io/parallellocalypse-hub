@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class='row'>
-				<div class='work-progress col-sm-8'>
+				<div class='work-progress col-sm-7'>
 					<div class='uibox'>
 						<div class="title">Devices</div>
 						<div class="container matrix-box">
@@ -76,11 +76,21 @@
 						</div>
 					</div>
 				</div>
-				<div class='locations col-sm-4'>
+				<div class='locations col-sm-5'>
 					<div class='uibox'>
 						<div class="title">Locations</div>
-						<div class="world-map"></div>
-						<table class="device-stats">
+						<div class="world-map">
+							<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+								<ui-gmap-circle ng-repeat='marker in markers' center='marker.center'
+								                radius='500000'
+								                fill='marker.fill'
+								                stroke='marker.stroke'
+								        >
+
+								</ui-gmap-circle>
+							</ui-gmap-google-map>
+						</div>
+						<table class="device-stats hidden">
 							<tr><th>Location</th><th>Devices</th></tr>
 							<tr ng-repeat="(countryState, device) in countryDevices" class="content f16">
 								<td><span class="flag {{device.country | lowercase}}"></span>{{countryState}}</td><td>{{device.count}}</td>

@@ -14,7 +14,8 @@ define [
 	'pubnub-angular',
 	'bootstrap',
 	'angular-bootstrap',
-	'angular-google-analytics'
+	'angular-google-analytics',
+	'angular-google-maps'
 ],
 (angular, _, Restangular, devicesController, downloadController,
 workController, loginController, createPoll, Auth) ->
@@ -35,7 +36,8 @@ workController, loginController, createPoll, Auth) ->
 			'pubnub.angular.service',
 			'templateCache',
 			'ui.bootstrap',
-			'angular-google-analytics'
+			'angular-google-analytics',
+			'uiGmapgoogle-maps'
 		])
 
 		.value 'config',
@@ -94,4 +96,10 @@ workController, loginController, createPoll, Auth) ->
 			AnalyticsProvider.setAccount('UA-63317104-1');
 			AnalyticsProvider.trackPages(true);
 			AnalyticsProvider.useAnalytics(true);
+		]
+		.config [ 'uiGmapGoogleMapApiProvider', (uiGmapGoogleMapApiProvider) ->
+			uiGmapGoogleMapApiProvider.configure({
+				v: '3.17',
+				libraries: 'visualization'
+			})
 		]

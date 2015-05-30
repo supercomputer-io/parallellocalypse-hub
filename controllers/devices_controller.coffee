@@ -33,7 +33,7 @@ module.exports = (passport) ->
 			else
 				res.send({ count })
 
-	router.get '/devices', auth.isLoggedIn, (req, res) ->
+	router.get '/devices', (req, res) ->
 		Device.find {}, (err, devices) ->
 			if(err)
 				console.log(err)
