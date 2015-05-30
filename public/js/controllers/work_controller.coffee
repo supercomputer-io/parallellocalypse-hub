@@ -1,13 +1,15 @@
 define [
 	'angular',
-	'lodash'
-], (angular, _) ->
+	'lodash',
+	'cs!../helpers/world_map'
+], (angular, _, worldMap) ->
 	return ['$scope', 'Restangular', '$routeParams', 'createPoll', 'Upload', 'PubNub', 'Auth', '$sce', 'config',
 		($scope, Restangular, $routeParams, createPoll, Upload, PubNub, Auth, $sce, config) ->
 
+
 			Auth.check (authenticated) ->
 				$scope.authenticated = authenticated
-
+				worldMap.create('world-map')
 				$scope.minutes = '00'
 				$scope.seconds = '00'
 				$scope.updateClock = ->

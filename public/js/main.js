@@ -25,7 +25,9 @@ require.config({
 		pubnub: '../bower_components//pubnub/web/pubnub.min',
 		'pubnub-angular': '../bower_components//pubnub-angular/lib/pubnub-angular',
 		'angular-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
-		'angular-google-analytics': '../bower_components/angular-google-analytics/dist/angular-google-analytics.min'
+		'angular-google-analytics': '../bower_components/angular-google-analytics/dist/angular-google-analytics.min',
+		amcharts: '../bower_components/amcharts/index',
+		'amcharts-world-low': '../bower_components/amcharts-world-low/index'
 	},
 	shim: {
 		angular: {
@@ -61,7 +63,11 @@ require.config({
 		},
 		'pubnub-angular': {
 			deps: [ 'angular', 'pubnub' ]
-		}
+		},
+		amcharts: {
+			exports: 'AmCharts'
+		},
+		'amcharts-world-low': ['amcharts']
 	}
 })
 
