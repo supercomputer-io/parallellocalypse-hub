@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class='row'>
-				<div class='work-progress col-sm-8'>
+				<div class='work-progress col-sm-7'>
 					<div class='uibox'>
 						<div class="title">Devices</div>
 						<div class="container matrix-box">
@@ -61,13 +61,13 @@
 						</div>
 					</div>
 				</div>
-				<div class='locations col-sm-4'>
+				<div class='locations col-sm-5'>
 					<div class='uibox'>
 						<div class="title">Locations</div>
-						<div class="world-map"></div>
-						<table class="device-stats">
+						<div id="world-map" class="world-map"></div>
+						<table class="device-stats f16">
 							<tr><th>Location</th><th>Devices</th></tr>
-							<tr ng-repeat="(countryState, device in countryDevices)" class="content f16">
+							<tr ng-repeat="(countryState, device) in countryDevices" class="content">
 								<td><span class="flag {{device.country | lowercase}}"></span>{{countryState}}</td><td>{{device.count}}</td>
 							</tr>
 						</table>

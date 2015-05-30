@@ -6,7 +6,7 @@
 				<div class='row'>
 					<div class='col-sm-6'>
 						<div class='uibox'>
-							<h4>Online CPU Cores</h4>
+							<h4>Cores Online</h4>
 							<div class='number-in-box'>
 								<h1>{{numDevices * 18 || 'Loading...' }}</h1>
 							</div>

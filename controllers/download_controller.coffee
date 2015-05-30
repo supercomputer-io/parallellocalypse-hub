@@ -8,6 +8,8 @@ config = require('../config')
 settings = require('resin-settings-client')
 
 apiUrl = settings.get('remoteUrl')
+accepts = require('accepts')
+imageUrlPrefix = config.s3.url + 'os/'
 
 router.get '/download', (req, res) ->
 	parameters = {
@@ -32,5 +34,17 @@ router.get '/download', (req, res) ->
 	}
 
 	return request.get(options).pipe(res)
+
+router.get '/download/:image', (req, res) ->
+	image = req.params.image
+	return res.sendStatus(404) if image not in ['Z7010', 'Z7020']
+	imageName = "resin-supercomputer-0.1.0-0.0.14-#{image}-16.img"
+	accept = accepts(req)
+	if accept.encoding('gzip') is 'gzip'
+		imageName += '.gz'
+
+	downloadUrl = imageUrlPrefix + imageName
+	res.redirect(301, downloadUrl)
+
 
 module.exports = router
