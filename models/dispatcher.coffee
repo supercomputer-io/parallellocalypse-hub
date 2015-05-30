@@ -10,7 +10,7 @@ Device = require './device'
 
 # The time to wait (per image) for a worker to complete an
 # assignment before reassigning it to someone else
-ASSIGNMENT_EXPIRATION = 15
+ASSIGNMENT_EXPIRATION = 11
 
 Dispatcher =
 
@@ -107,7 +107,7 @@ Dispatcher =
 
 			expiredAssignments = _.filter d.workload.assigned, (chunk) ->
 				if chunk?
-					return !d.workload.results[chunk.chunkId]? && chunk.assignTime < (Date.now() - (workload.chunkSize * ASSIGNMENT_EXPIRATION))
+					return !d.workload.results[chunk.chunkId]? && chunk.assignTime < (Date.now() - (d.workload.chunkSize * ASSIGNMENT_EXPIRATION))
 				else
 					return false
 
@@ -200,7 +200,7 @@ Dispatcher =
 						callback: distributeAll
 						state: true
 					})
-				, 1000
+				, 600
 				console.log(d.workload.assigned)
 
 		pubnub.here_now({
