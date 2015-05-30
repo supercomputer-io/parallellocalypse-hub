@@ -107,7 +107,7 @@ define [
 										$scope.chunkStyle[dev.uuid] = {style: 'assigned', uuid: dev.uuid}
 									else
 										$scope.chunks[dev.uuid] = 'nocache'
-										$scope.chunkStyle[dev.uuid] = {style: 'noache', uuid: dev.uuid}
+										$scope.chunkStyle[dev.uuid] = {style: 'nocache', uuid: dev.uuid}
 
 					devicesPoll = createPoll($scope.getDevices)
 					devicesPoll.start()
