@@ -82,7 +82,7 @@
 						<div class="world-map">
 							<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 								<ui-gmap-circle ng-repeat='marker in markers' center='marker.center'
-								                radius='300000'
+								                radius='100000'
 								                fill='marker.fill'
 								                stroke='marker.stroke'
 								        >
