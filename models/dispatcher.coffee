@@ -178,7 +178,7 @@ Dispatcher =
 					return err
 
 				d.workload.totalSize = images.length
-				d.workload.chunkSize = Math.min( Math.ceil(d.workload.totalSize / numWorkers), 100)
+				d.workload.chunkSize = Math.min( Math.ceil(d.workload.totalSize / numWorkers) * 2, 150)
 				console.log(d.workload.chunkSize)
 				d.workload.numChunks = Math.ceil(d.workload.totalSize / d.workload.chunkSize)
 
