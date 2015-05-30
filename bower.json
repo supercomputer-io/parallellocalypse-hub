@@ -35,7 +35,7 @@
     "requirejs-google-analytics": "~0.1.11",
     "angular-bootstrap": "~0.13.0",
     "angular-google-analytics": "~0.0.15",
-	"amcharts": "http://www.amcharts.com/lib/3/ammap.js",
-	"amcharts-world-low": "http://www.amcharts.com/lib/3/maps/js/worldLow.js"
+    "amcharts": "http://www.amcharts.com/lib/3/ammap.js",
+    "amcharts-world-low": "http://www.amcharts.com/lib/3/maps/js/worldLow.js"
   }
 }
