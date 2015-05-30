@@ -121,7 +121,7 @@ Dispatcher =
 					if workerList[0].state.status == 'Idle' && ! d.work.workerAssigned[workerList[0].uuid]?
 						images = d.work.images[chunkId]
 						workSize = images.length
-						targetImage = d.workload.targetImage.image.resized.path
+						targetImage = d.workload.targetImage.image.original.path
 
 						pubnub.publish({
 							channel: workerList[0].uuid
