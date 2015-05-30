@@ -84,7 +84,7 @@ define [
 						channel: 'results'
 						callback: (result) ->
 							$scope.chunks[result.device] = 'solved'
-							$scope.chunkStyle[result.device] = {style: 'solved', uuid: dev.uuid}
+							$scope.chunkStyle[result.device] = {style: 'solved', uuid: result.device}
 
 					$scope.getDevices = ->
 						PubNub.ngHereNow
