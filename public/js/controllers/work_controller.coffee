@@ -138,19 +138,19 @@ define [
 						Restangular.all('work/stop').post().then ->
 							console.log('Work stopped')
 
-					$scope.$watch 'file', (file) ->
+					$scope.$watch 'file', ->
 						console.log('fwatch')
-						if (file?)
+						if ($scope.file?)
 							#poll.stop()
 							$scope.uploadFile(file)
 							$scope.result = {}
 					, true
 
-					$scope.$watch 'file2', (file) ->
-						console.log('fwatch')
-						if (file?)
+					$scope.$watch 'file2', ->
+						console.log('fwatch2')
+						if ($scope.file2?)
 							#poll.stop()
-							$scope.uploadFile(file)
+							$scope.uploadFile($scope.file2)
 							$scope.result = {}
 					, true
 
