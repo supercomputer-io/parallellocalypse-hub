@@ -102,7 +102,7 @@ Dispatcher =
 					publishWorkload()
 
 		distributeAll = (workers) ->
-			workerList = workers.uuids
+			workerList = _.shuffle(workers.uuids)
 			chunkId = 0
 
 			expiredAssignments = _.filter d.workload.assigned, (chunk) ->
