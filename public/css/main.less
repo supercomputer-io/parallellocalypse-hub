@@ -5,7 +5,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 
 body {
-	padding-top: 90px;
 	background: #0A1F2E;
 	font-family: OpenSans-Semibold, sans-serif;
 	font-weight: 500;
@@ -22,15 +21,29 @@ body {
 
 .footer {
 	background: #030E16;
-	height: 200px;	
+	height: 200px;
 }
 
 .landing-jumbotron {
+	height: 100vh;
+	text-align: center;
 	margin-top: -42px;
 	padding-top: 30px;
+ 	margin-bottom: 0;
 	color: #FFFFFF;
 	background-image: url("/img/hero-overlay.png");
 	background-size: cover;
+
+	.text {
+		padding: 30px 0;
+		font-weight: 200;
+	}
+
+	.logo {
+		margin-top: 30px;
+		margin-right: 10px;
+		height: 60px;
+	}
 }
 
 .faq-title {
